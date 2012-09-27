@@ -63,5 +63,5 @@ set wrap
 set backup              " создавать .bak файлы (по умолчанию <oldname>~)
 set background=dark
 highlight Comment ctermfg=darkgreen
-:set ruler
+set ruler
 filetype plugin on
