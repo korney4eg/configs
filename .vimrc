@@ -9,7 +9,7 @@
 " make changes after sourcing debian.vim since it alters the value of the
 " 'compatible' option.
 
-" This line should not be removed as it ensures that various options are
+"  This line should not be removed as it ensures that various options are
 " properly set to work with the Vim-related packages available in Debian.
 runtime! debian.vim
 
@@ -78,4 +78,6 @@ filetype plugin on
  "    %c - номер колонки
  "    %P - процент содержания показанного файла в
  "         окне
- set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ \ %l,%c\ %P
+ "set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ \ %l,%c\ %P
+ "set statusline=%<%1*%f%h%m%r%*\ %b\ %2*%{&encoding}%*\ \ %l,%c\ %P
+ set statusline=%<[%n]\ %f\ %m%r%h%w\ %y\ %{&fileencoding}%=%b\ \ \ %c/%v\ %l/%L\ \ %P\ %a
