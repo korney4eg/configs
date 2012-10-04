@@ -63,5 +63,19 @@ set wrap
 set backup              " создавать .bak файлы (по умолчанию <oldname>~)
 set background=dark
 highlight Comment ctermfg=darkgreen
-set ruler
+:set ruler
 filetype plugin on
+" Всегда показывать строку статуса
+ set laststatus=2 
+" " Выключить линейку
+ set noruler
+ "    %f - путь к редактируемому файлу
+ "    %h, %m и %r - флаги состояния буфера: страница помощи, изменения и только для чтения
+ "    %b - код символа в ASCII  
+ "         &encoding - кодировка файла
+ "          \ - пробел необходимо экранировать
+ "    %l -  номер строки
+ "    %c - номер колонки
+ "    %P - процент содержания показанного файла в
+ "         окне
+ set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ \ %l,%c\ %P
