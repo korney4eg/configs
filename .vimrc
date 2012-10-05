@@ -34,9 +34,9 @@ endif
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
-if has("autocmd")
-  filetype plugin indent on
-endif
+"if has("autocmd")
+"  filetype plugin indent on
+"endif
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
@@ -50,9 +50,9 @@ set hidden             " Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 set number
 " Source a global configuration file if available
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
+"if filereadable("/etc/vim/vimrc.local")
+"  source /etc/vim/vimrc.local
+"endif
 set autoindent
 "при поиске помечать все найденные строки
 set hlsearch
@@ -64,7 +64,7 @@ set backup              " создавать .bak файлы (по умолча�
 set background=dark
 highlight Comment ctermfg=darkgreen
 :set ruler
-"filetype plugin on
+filetype plugin on
 " Всегда показывать строку статуса
  set laststatus=2 
 " " Выключить линейку
