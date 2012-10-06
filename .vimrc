@@ -8,6 +8,7 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'mattn/zencoding-vim'
+"Bundle 'xolox/vim-lua-inspect'
 filetype plugin indent on
 
 
