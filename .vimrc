@@ -8,6 +8,9 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'mattn/zencoding-vim'
+Bundle 'vim-scripts/mru.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'klen/python-mode.git'
 "Bundle 'xolox/vim-lua-inspect'
 filetype plugin indent on
 
@@ -92,3 +95,7 @@ highlight Comment ctermfg=darkgreen
  "set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ \ %l,%c\ %P
  "set statusline=%<%1*%f%h%m%r%*\ %b\ %2*%{&encoding}%*\ \ %l,%c\ %P
  set statusline=%<[%n]\ %f\ %m%r%h%w\ %y\ %{&fileencoding}%=%b\ \ \ %c/%v\ %l/%L\ \ %P\ %a
+
+
+ " for python
+ autocmd FileType python set omnifunc=pythoncomplete#Complete
