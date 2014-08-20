@@ -14,28 +14,16 @@ shopt -s checkwinsize
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
-# Добавляем цвета
 
 # set a fancy prompt (non-color, overwrite the one in /etc/profile)
-#PS1="\[\033[\u@\h:\w\$ "
-#PS1="\[\033[\033[1;31;40m\u@\h:\w\033[0;34;40m]\033[0;32;40m $\033[0;32;0m\] "
 PS1='\[\033[1;30m\]\t-\[\033[1;31m\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[01;34m\]:\w $\[\033[0m\]'
 
 
-# Commented out, don't overwrite xterm -T "title" -n "icontitle" by default.
-# If this is an xterm set the title to user@host:dir
-#case "$TERM" in
-#xterm*|rxvt*)
-#    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
-#    ;;
-#*)
-#    ;;
-#esac
 
 # enable bash completion in interactive shells
-#if [ -f /etc/bash_completion ]; then
-#    . /etc/bash_completion
-#fi
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
 
 # if the command-not-found package is installed, use it
 if [ -x /usr/lib/command-not-found ]; then
@@ -49,10 +37,16 @@ if [ -x /usr/lib/command-not-found ]; then
 		fi
 	}
 fi
-#alias wc3='cd "/mnt/d/games/Warcraft III"/" && wine w3l.exe'
-#alias aptitude = 'sudo aptitude'
-#alias shutdown ="sudo shutdown"
-#alias reboot = 'sudo reboot'
+
+#if [ -e /usr/share/terminfo/x/xterm+256color ]; then
+#        export TERM='xterm+256color'
+#else
+#        export TERM='xterm-color'
+#fi
+#set this value because navigation buttons does not work with 256 colored xterm
+export TERM='xterm-color'
+
+
 
 # free memory
 alias free="free -m"
@@ -60,7 +54,7 @@ alias free="free -m"
 # system helpers
 alias update="sudo aptitude update"
 alias install="sudo aptitude install"
-alias upgrade="sudo aptitude update ; sudo aptitude upgrade"
+alias upgrade="sudo aptitude upgrade"
 alias remove="sudo aptitude remove"
 alias clean="sudo aptitude clean"
 alias search="sudo aptitude search"
@@ -69,13 +63,13 @@ alias umounts="sudo umount"
 #alias ipconf="sudo ifconfig"
 # reload bash aliases
 alias reload="source ~/.bashrc"
-
+alias i="ifdown wlan0;ifup wlan0"
 alias duh="du --max-depth=1 -k | sort -nr | cut -f2 | xargs -d '\n' du -sh"
 alias ls='ls --color=always --group-directories-first'
-alias ll='ls -laFG'
+alias ll='ls -lFG'
 alias la='ls -A'
 alias l='ls -CF'
-alias grp='grep —color=always' 
+alias grep='grep —color=always' 
 alias todo='yagtd -c /home/korney/todo.txt'
 alias d='cd /mnt/d'
 alias smount='sudo mount -o umask=000'
@@ -84,13 +78,14 @@ alias dvdiso='growisofs -Z /dev/cdrom='
 # Запись папки на DVD
 alias dvdburn='growisofs -Z /dev/cdrom -J -jcharset koi8-r -r -hide-rr-moved -multi $* '
 alias ifup='sudo ifup '
+alias df='df -h'
 alias ifdown='sudo ifdown '
-alias ifconfig ='sudo ifconfig'
 alias reboot='sudo shutdown -r now '
 alias rm='rm -i'
 alias halt='sudo shutdown -h now'
+alias hibernate='sudo pm-hibernate'
+alias suspend='sudo pm-suspend'
 #Experimental
-alias 1c="rdesktop sk-srv1.dvrdns.org -u korneev -d sk -g 1280x768 -a 16 -b -z &"
 alias xterm="xterm -fa Monaco -fs 14 -fg white -bg black &"
 #alias place="du d/Downloads/* -sk | sort -g| awk '{print \$1/1024 \" MB\",\"\t\"\$2}'"
 
@@ -111,7 +106,6 @@ function wcd
 $HOME/bin/wcd.exec $*
 . $HOME/bin/wcd.go
 }
-#w3m -dump_source http://www.onelinerz.net/random-one-liners/1/ | awk ' /.*<div id=\"oneliner_[0-9].*/ {while (! /\/div/ ) { gsub("\n", ""); getline; }; gsub (/<[^>][^>]*>/, "", $0); print $0}'
 function weather
 {
 	echo -e "\033[1;32m "
@@ -142,3 +136,4 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export HISTCONTROL=ignoredups
 export EDITOR= vim
 #xrdb ~/.Xdefaults
+alias sketchup="wine /home/korney/.wine/drive_c/Program\ Files/SketchUp/SketchUp\ 2014/SketchUp.exe &"

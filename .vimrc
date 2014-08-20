@@ -4,13 +4,15 @@
 set nocompatible
 syntax on
 filetype off
-set rtp+=~/.vim/vundle.git/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'mattn/zencoding-vim'
 Bundle 'vim-scripts/mru.vim'
+Bundle 'vim-scripts/taglist.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'klen/python-mode.git'
+Bundle 'tomasr/molokai'
 "Bundle 'xolox/vim-lua-inspect'
 filetype plugin indent on
 
@@ -39,7 +41,7 @@ filetype plugin indent on
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
 set background=dark
-
+set t_Co=256
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
@@ -61,7 +63,7 @@ set smartcase		" Do smart case matching
 set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden             " Hide buffers when they are abandoned
-set mouse=a		" Enable mouse usage (all modes)
+"set mouse=a		" Enable mouse usage (all modes)
 set number
 " Source a global configuration file if available
 "if filereadable("/etc/vim/vimrc.local")
@@ -75,8 +77,8 @@ set incsearch
 "не разрывать строку
 set wrap
 set backup              " создавать .bak файлы (по умолчанию <oldname>~)
-set background=dark
-highlight Comment ctermfg=darkgreen
+"set background=dark
+"highlight Comment ctermfg=darkgreen
 :set ruler
 "filetype plugin on
 " Всегда показывать строку статуса
@@ -95,7 +97,11 @@ highlight Comment ctermfg=darkgreen
  "set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ \ %l,%c\ %P
  "set statusline=%<%1*%f%h%m%r%*\ %b\ %2*%{&encoding}%*\ \ %l,%c\ %P
  set statusline=%<[%n]\ %f\ %m%r%h%w\ %y\ %{&fileencoding}%=%b\ \ \ %c/%v\ %l/%L\ \ %P\ %a
-
-
+ colorscheme molokai
  " for python
- autocmd FileType python set omnifunc=pythoncomplete#Complete
+ autocmd FileType python set omnifunc=pythoncomplete#Complete  
+ autocmd FileType python let pymode_run = 1
+ autocmd FileType python let Tlist_Auto_Open = 1
+ autocmd FileType python let Tlist_Use_Right_Window = 1
+ autocmd FileType python let Tlist_Exit_OnlyWindow = 1
+ autocmd FileType python let Tlist_Sort_Type = "order"
