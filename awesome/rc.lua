@@ -13,7 +13,7 @@ require("debian.menu")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
- beautiful.init("/home/korney/.config/awesome/theme.lua")
+ beautiful.init("/home/korney/.config/awesome/space.lua")
 --beautiful.init("theme.lua")
 
 -- This is used later as the default terminal and editor to run.
@@ -59,8 +59,8 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "main",     " www ",     " chat ",  "docs",      "office",    "games",    "music",   "virt",     9 }, s,
-   			{  layouts[7],layouts[10], layouts[3],layouts[10],layouts[10],layouts[10], layouts[2],layouts[10], layouts[2]  })
+    tags[s] = awful.tag({ "main",     " www ",     " chat ",  "docs",      "dev",    "games",    "graphics",   "virt",     9 }, s,
+   			{  layouts[7],layouts[10], layouts[3],layouts[10],layouts[10],layouts[11], layouts[1],layouts[10], layouts[2]  })
 
 
 end
@@ -202,7 +202,7 @@ uptimewidget = widget({ type = "textbox" })
 -- Create an fswidget -----------------------------------------------------------
 
 fswidget = widget({ type = "textbox" })
-vicious.register(fswidget, vicious.widgets.fs, "<span color=\"#92b7bf\"> /home <span color=\"#ffd700\">${/home avail_mb} MB</span>  D:\\ <span color=\"#ffd700\">${/mnt/d avail_gb} GB</span> G:\\ <span color=\"#ffd700\">${/mnt/g avail_gb} GB</span>  </span>", 37)
+vicious.register(fswidget, vicious.widgets.fs, "<span color=\"#92b7bf\"> /home <span color=\"#ffd700\">${/home avail_gb} GB</span>    </span>", 37)
  
 ---------------------------------------------------------------------------------
 
@@ -325,6 +325,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
+    -- Lock screen
+    awful.key({ modkey,           }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
@@ -416,10 +418,13 @@ awful.rules.rules = {
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
-      properties = { floating = true } },
+      properties = { floating = true , tag = tags[1][7] } },
     -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+     { rule = { class = "Firefox" },
+       properties = { tag = tags[1][2] } },
+     
+     { rule = { class = "Steam" },
+       properties = { tag = tags[1][6] } },
 
      { rule = { class = "Google-chrome" },
        properties = { tag = tags[1][2] } },
@@ -431,12 +436,23 @@ awful.rules.rules = {
        properties = { tag = tags[1][4] } },
 
      { rule = { class = "OpenOffice.org 3.2" },
-       properties = { tag = tags[1][5] } },
+       properties = { tag = tags[1][4] } },
+     { rule = { class = "LibreOffice" },
+       properties = { tag = tags[1][4] } },
 
      { rule = { class = "VirtualBox" },
        properties = { tag = tags[1][8] } },
 
+     { rule = { class = "rdesktop" },
+       properties = { tag = tags[1][9] } },
+     
+     { rule = { class = "Aptana Studio 3" },
+       properties = { tag = tags[1][5] } },
 
+     { rule = { name = "angband" },
+       properties = { tag = tags[1][6] } },
+     { rule = { name = "UFO:AI" },
+       properties = { tag = tags[1][6] } },
 }
 -- }}}
 
