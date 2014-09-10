@@ -5,41 +5,32 @@ set nocompatible
 syntax on
 filetype off
 set rtp+=~/.vim/bundle/vundle/
+" just before this run:
+" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle/
+
 call vundle#rc()
+" Common plugins:
+" voundle plugin - plugin manager
 Bundle 'gmarik/vundle'
-Bundle 'mattn/zencoding-vim'
-Bundle 'vim-scripts/mru.vim'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'klen/python-mode.git'
+" download color theme
 Bundle 'tomasr/molokai'
+" Most recent opened files
+" Usage:
+" :MRU - will open most edited files
+Bundle 'vim-scripts/mru.vim'
+
+" HTML, CSS edititon
+"Bundle 'mattn/zencoding-vim'
+
+"Bundle 'vim-scripts/taglist.vim'
+"Bundle 'majutsushi/tagbar'
+"For python programming
+"Bundle 'klen/python-mode.git'
+"For lua programming
 "Bundle 'xolox/vim-lua-inspect'
 filetype plugin indent on
 
 
-" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
-" /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
-" you can find below.  If you wish to change any of those settings, you should
-" do it in this file (/etc/vim/vimrc), since debian.vim will be overwritten
-" everytime an upgrade of the vim packages is performed.  It is recommended to
-" make changes after sourcing debian.vim since it alters the value of the
-" 'compatible' option.
-
-"  This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages available in Debian.
-"runtime! debian.vim
-
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
-
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
-"syntax on
-
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
 set background=dark
 set t_Co=256
 " Uncomment the following to have Vim jump to the last position when
@@ -99,9 +90,6 @@ set backup              " создавать .bak файлы (по умолча�
  set statusline=%<[%n]\ %f\ %m%r%h%w\ %y\ %{&fileencoding}%=%b\ \ \ %c/%v\ %l/%L\ \ %P\ %a
  colorscheme molokai
  " for python
- autocmd FileType python set omnifunc=pythoncomplete#Complete  
- autocmd FileType python let pymode_run = 1
- autocmd FileType python let Tlist_Auto_Open = 1
- autocmd FileType python let Tlist_Use_Right_Window = 1
- autocmd FileType python let Tlist_Exit_OnlyWindow = 1
- autocmd FileType python let Tlist_Sort_Type = "order"
+ autocmd FileType html setlocal shiftwidth=2 tabstop=2
+ autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+ autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
