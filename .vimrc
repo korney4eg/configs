@@ -18,7 +18,8 @@ Bundle 'tomasr/molokai'
 " Usage:
 " :MRU - will open most edited files
 Bundle 'vim-scripts/mru.vim'
-
+" Vim airline - more awesome than just status line
+Bundle 'bling/vim-airline'
 " HTML, CSS edititon
 "Bundle 'mattn/zencoding-vim'
 
@@ -93,3 +94,6 @@ set backup              " создавать .bak файлы (по умолча�
  autocmd FileType html setlocal shiftwidth=2 tabstop=2
  autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
  autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
+
+ "Set configuration to display tab names
+ let g:airline#extensions#tabline#enabled = 1
