@@ -18,11 +18,19 @@ Bundle 'tomasr/molokai'
 " Usage:
 " :MRU - will open most edited files
 Bundle 'vim-scripts/mru.vim'
+" for using snippets
+Bundle 'msanders/snipmate.vim'
 " Vim airline - more awesome than just status line
+Bundle 'korney4eg/vim-chef-snippets'
+" snippets for chef
 Bundle 'bling/vim-airline'
+" Use chef 
+Bundle 'korney4eg/vim-chef'
+
+
+
 " HTML, CSS edititon
 "Bundle 'mattn/zencoding-vim'
-
 "Bundle 'vim-scripts/taglist.vim'
 "Bundle 'majutsushi/tagbar'
 "For python programming
