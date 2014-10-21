@@ -171,7 +171,7 @@ alias ls='ls --color=always --group-directories-first'
 alias ll='ls -lFG'
 alias la='ls -A'
 alias l='ls -CF'
-alias grep='grep —color=always' 
+#alias grep='grep —color=always' 
 alias d='cd /mnt/d'
 alias smount='sudo mount -o umask=000'
 # Запись iso образа на DVD
