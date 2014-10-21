@@ -1,8 +1,3 @@
-# System-wide .bashrc file for interactive bash(1) shells.
-
-# To enable the settings / commands in this file for login shells as well,
-# this file has to be sourced in /etc/profile.
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -10,10 +5,6 @@
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
 
 
 # enable bash completion in interactive shells
@@ -33,12 +24,18 @@ if [ -x /usr/lib/command-not-found ]; then
 		fi
 	}
 fi
-#  Customize BASH PS1 prompt to show current GIT repository and branch.
-#  by Mike Stewart - http://MediaDoneRight.com
+
+
+#==========================================================================
 
 #  SETUP CONSTANTS
 #  Bunch-o-predefined colors.  Makes reading code easier than escape sequences.
 #  I don't remember where I found this.  o_O
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
 
 # Reset
 Color_Off="\[\033[0m\]"       # Text Reset
@@ -122,73 +119,61 @@ PathFull="\W"
 NewLine="\n"
 Jobs="\j"
 
+# get OS name
+OS=$(awk '/ID=/' /etc/*-release | sed 's/^.*ID=//' | tr '[:upper:]' '[:lower:]')
 
-# This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
-# I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
-
-export PS1=$IWhite$Time24h$Color_Off'$(git branch &>/dev/null;\
-if [ $? -eq 0 ]; then \
-  echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
-  if [ "$?" -eq "0" ]; then \
-    # @4 - Clean repository - nothing to commit
-    echo "'$Green'"$(__git_ps1 " (%s)"); \
-  else \
-    # @5 - Changes to working tree
-    echo "'$IRed'"$(__git_ps1 " {%s}"); \
-  fi) '$BBlue$PathShort$Color_Off'\$ "; \
-else \
-  # @2 - Prompt when not in GIT repo
-  echo " '$Blue$PathShort$Color_Off'\$ "; \
-fi)'
-#if [ -e /usr/share/terminfo/x/xterm+256color ]; then
-#        export TERM='xterm+256color'
-#else
-#        export TERM='xterm-color'
-#fi
-#set this value because navigation buttons does not work with 256 colored xterm
-export TERM='xterm-color'
+if [ $OS = 'debian' ] || [ $OS = 'ubuntu' ]
+then
+	PACKMAN='aptitude'
+else
+	PACKMAN='yum'
+fi
 
 
+#=========================  A L I A S E S ============================
 
-# free memory
-alias free="free -m"
+# aptitude aliases
+alias update="sudo $PACKMAN update"
+alias install="sudo $PACKMAN install"
+alias upgrade="sudo $PACKMAN upgrade"
+alias remove="sudo $PACKMAN remove"
+alias clean="sudo $PACKMAN clean"
+alias search="sudo $PACKMAN search"
 
-# system helpers
-alias update="sudo aptitude update"
-alias install="sudo aptitude install"
-alias upgrade="sudo aptitude upgrade"
-alias remove="sudo aptitude remove"
-alias clean="sudo aptitude clean"
-alias search="sudo aptitude search"
+#alias to enable user mount partitions (please check /etc/sudoers)
 alias mounts="sudo mount -o umask=000 "
 alias umounts="sudo umount"
-#alias ipconf="sudo ifconfig"
+
 # reload bash aliases
 alias reload="source ~/.bashrc"
+
+#useful network aliases
+alias ifup='sudo ifup '
+alias ifdown='sudo ifdown '
 alias i="ifdown wlan0;ifup wlan0"
+
 alias duh="du --max-depth=1 -k | sort -nr | cut -f2 | xargs -d '\n' du -sh"
+alias df='df -h'
+
+# free RAM
+alias free="free -m"
+
+#ls aliases
 alias ls='ls --color=always --group-directories-first'
 alias ll='ls -lFG'
 alias la='ls -A'
 alias l='ls -CF'
+
 #alias grep='grep —color=always' 
-alias d='cd /mnt/d'
-alias smount='sudo mount -o umask=000'
-# Запись iso образа на DVD
-alias dvdiso='growisofs -Z /dev/cdrom='
-# Запись папки на DVD
-alias dvdburn='growisofs -Z /dev/cdrom -J -jcharset koi8-r -r -hide-rr-moved -multi $* '
-alias ifup='sudo ifup '
-alias df='df -h'
-alias ifdown='sudo ifdown '
 alias reboot='sudo shutdown -r now '
-alias rm='rm -i'
 alias halt='sudo shutdown -h now'
 alias hibernate='sudo pm-hibernate'
 alias suspend='sudo pm-suspend'
-#Experimental
-alias xterm="xterm -fa Monaco -fs 14 -fg white -bg black &"
-#alias place="du d/Downloads/* -sk | sort -g| awk '{print \$1/1024 \" MB\",\"\t\"\$2}'"
+
+#other aliases
+alias rm='rm -i'
+
+#-------------------------------------------------------------
 
 function space
 {
@@ -202,31 +187,10 @@ function space
 	fi
 	du $put -s | sort -g| awk '{print $1/1024 " MB","\t"$2}'
 }
-function wcd
-{
-$HOME/bin/wcd.exec $*
-. $HOME/bin/wcd.go
-}
-function weather
-{
-	echo -e "\033[1;32m "
-	links -nolist -dump http://wap.gismeteo.ru/wap2/towns/26702.wap2 |  sed -n '6,11p;29,32p;32q'
-
-}
 #files=(/usr/share/cowsay/cows/*);cowsay -f `printf "%s\n" "${files[RANDOM % ${#files}]}"` "`fortune`"
-function todos
-{
-	echo -e "\033[1;31mСрочно !!!"
-	echo " "
-	sed -e '/C:100/ d' todo.txt |sed -n -e '/\!NOW/ p'| sed  -e 's/\([^@]*\).*/\1/'  
-	echo -e "\033[1;32m "
-	sed -e '/C:100/ d' todo.txt |sed -n -e '/\!NOW/ !p'| sed  -e 's/\([^@]*\).*/\1/'  
 
-	sed -e '/C:100/ d' todo.txt |sed -n -e '/\!NOW/ p'| sed  -e 's/\([^@]*\).*/\1/'   > /mnt/d/docs/todo.txt
-	echo " ">> /mnt/d/docs/todo.txt
-	sed -e '/C:100/ d' todo.txt |sed -n -e '/\!NOW/ !p'| sed  -e 's/\([^@]*\).*/\1/' >> /mnt/d/docs/todo.txt
-	echo " "
-}
+
+# less color variables
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -234,8 +198,31 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
+
 export HISTCONTROL=ignoredups
+
 export EDITOR= vim
 export PATH=$PATH:~/bin/
-#xrdb ~/.Xdefaults
-alias sketchup="wine ~/.wine/drive_c/Program\ Files/SketchUp/SketchUp\ 2014/SketchUp.exe &"
+
+
+#  Customize BASH PS1 prompt to show current GIT repository and branch.
+#  by Mike Stewart - http://MediaDoneRight.com
+# This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
+# I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
+
+export PS1=$IBlack$Time24h$Color_Off'$(git branch &>/dev/null;\
+if [ $? -eq 0 ]; then \
+  echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
+  if [ "$?" -eq "0" ]; then \
+    # @4 - Clean repository - nothing to commit
+    echo "'$BGreen'"$(__git_ps1 " (%s)"); \
+  else \
+    # @5 - Changes to working tree
+    echo "'$IRed'"$(__git_ps1 " {%s}"); \
+  fi) '$BBlue$PathShort$Color_Off'\$ "; \
+else \
+  # @2 - Prompt when not in GIT repo
+  echo " '$Blue$PathShort$Color_Off'\$ "; \
+fi)'
+
+export TERM='xterm-color'
