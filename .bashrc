@@ -158,6 +158,14 @@ alias df='df -h'
 # free RAM
 alias free="free -m"
 
+#git aliases
+alias gs='git status '
+alias gu='git pull upstream '
+alias gp='git push '
+alias ga='git add '
+alias gr='git rm '
+alias gc='git commit '
+
 #ls aliases
 alias ls='ls --color=always --group-directories-first'
 alias ll='ls -lFG'
