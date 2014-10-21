@@ -20,6 +20,8 @@ Bundle 'tomasr/molokai'
 Bundle 'vim-scripts/mru.vim'
 " Vim airline - more awesome than just status line
 Bundle 'bling/vim-airline'
+" show git status in file
+Bundle 'airblade/vim-gitgutter'
 " HTML, CSS edititon
 "Bundle 'mattn/zencoding-vim'
 
@@ -68,7 +70,6 @@ set hlsearch
 set incsearch
 "не разрывать строку
 set wrap
-set backup              " создавать .bak файлы (по умолчанию <oldname>~)
 "set background=dark
 "highlight Comment ctermfg=darkgreen
 :set ruler
