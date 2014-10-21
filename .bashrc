@@ -165,6 +165,9 @@ alias gp='git push '
 alias ga='git add '
 alias gr='git rm '
 alias gc='git commit '
+alias gb='git branch '
+alias gd='git diff '
+alias gco='git checkout '
 
 #ls aliases
 alias ls='ls --color=always --group-directories-first'
