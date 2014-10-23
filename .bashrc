@@ -122,7 +122,7 @@ Jobs="\j"
 # get OS name
 OS=$(awk '/ID=/' /etc/*-release | sed 's/^.*ID=//' | tr '[:upper:]' '[:lower:]')
 
-if [ $OS = 'debian' ] || [ $OS = 'ubuntu' ]
+if [ "$OS" = "debian" ] || [ "$OS" = "ubuntu" ]
 then
 	PACKMAN='aptitude'
 else
