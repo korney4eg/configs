@@ -120,7 +120,7 @@ NewLine="\n"
 Jobs="\j"
 
 # get OS name
-OS=$(awk '/ID=/' /etc/*-release | sed 's/^.*ID=//' | tr '[:upper:]' '[:lower:]')
+OS=$(awk '/^ID=/' /etc/*-release | sed 's/^.*ID=//' | tr '[:upper:]' '[:lower:]')
 
 if [ $OS = 'debian' ] || [ $OS = 'ubuntu' ]
 then
@@ -170,7 +170,7 @@ alias gd='git diff '
 alias gco='git checkout '
 
 #ls aliases
-alias ls='ls --color=always --group-directories-first'
+alias ls='ls --color=always'
 alias ll='ls -lFG'
 alias la='ls -A'
 alias l='ls -CF'

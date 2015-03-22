@@ -10,6 +10,8 @@ set rtp+=~/.vim/bundle/vundle/
 
 call vundle#rc()
 " Common plugins:
+" for using snippets
+Bundle 'msanders/snipmate.vim'
 " voundle plugin - plugin manager
 Bundle 'gmarik/vundle'
 " download color theme
@@ -19,11 +21,20 @@ Bundle 'tomasr/molokai'
 " :MRU - will open most edited files
 Bundle 'vim-scripts/mru.vim'
 " Vim airline - more awesome than just status line
+Bundle 'korney4eg/vim-chef-snippets'
+" snippets for chef
 Bundle 'bling/vim-airline'
 " show git status in file
 Bundle 'airblade/vim-gitgutter'
 " HTML, CSS edititon
 "Bundle 'mattn/zencoding-vim'
+" Use chef 
+Bundle 'korney4eg/vim-chef'
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'ngmy/vim-rubocop'
+
+syntax on
 
 "Bundle 'vim-scripts/taglist.vim'
 "Bundle 'majutsushi/tagbar'
