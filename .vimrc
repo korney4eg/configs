@@ -18,12 +18,18 @@ Bundle 'tomasr/molokai'
 " Usage:
 " :MRU - will open most edited files
 Bundle 'vim-scripts/mru.vim'
+
 " Vim airline - more awesome than just status line
 Bundle 'bling/vim-airline'
+
 " show git status in file
 Bundle 'airblade/vim-gitgutter'
 " HTML, CSS edititon
 "Bundle 'mattn/zencoding-vim'
+
+"Markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 "Bundle 'vim-scripts/taglist.vim'
 "Bundle 'majutsushi/tagbar'
