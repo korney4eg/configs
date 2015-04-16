@@ -2,7 +2,6 @@
 "set spell!
 
 set nocompatible
-syntax on
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 " just before this run:
@@ -33,6 +32,7 @@ Bundle 'korney4eg/vim-chef'
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'ngmy/vim-rubocop'
+Bundle 'scrooloose/nerdtree'
 
 syntax on
 
