@@ -10,31 +10,29 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " Common plugins:
 " for using snippets
-Bundle 'msanders/snipmate.vim'
+Plugin 'msanders/snipmate.vim'
 " voundle plugin - plugin manager
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 " download color theme
-Bundle 'tomasr/molokai'
+Plugin 'tomasr/molokai'
 " Most recent opened files
 " Usage:
 " :MRU - will open most edited files
-Bundle 'vim-scripts/mru.vim'
+Plugin 'vim-scripts/mru.vim'
 
 " Vim airline - more awesome than just status line
-Bundle 'korney4eg/vim-chef-snippets'
+Plugin 'korney4eg/vim-chef-snippets'
 " snippets for chef
-Bundle 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 
 " show git status in file
-Bundle 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 " HTML, CSS edititon
-"Bundle 'mattn/zencoding-vim'
+"Plugin 'mattn/zencoding-vim'
 " Use chef 
-Bundle 'korney4eg/vim-chef'
-Bundle 'godlygeek/tabular'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'ngmy/vim-rubocop'
-Bundle 'scrooloose/nerdtree'
+Plugin 'korney4eg/vim-chef'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'scrooloose/nerdtree'
 
 syntax on
 
@@ -46,12 +44,12 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 
-"Bundle 'vim-scripts/taglist.vim'
-"Bundle 'majutsushi/tagbar'
+"Plugin 'vim-scripts/taglist.vim'
+"Plugin 'majutsushi/tagbar'
 "For python programming
-"Bundle 'klen/python-mode.git'
+"Plugin 'klen/python-mode.git'
 "For lua programming
-"Bundle 'xolox/vim-lua-inspect'
+"Plugin 'xolox/vim-lua-inspect'
 filetype plugin indent on
 
 
