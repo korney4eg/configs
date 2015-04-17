@@ -2,7 +2,6 @@
 "set spell!
 
 set nocompatible
-syntax on
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 " just before this run:
@@ -10,6 +9,8 @@ set rtp+=~/.vim/bundle/vundle/
 
 call vundle#rc()
 " Common plugins:
+" for using snippets
+Bundle 'msanders/snipmate.vim'
 " voundle plugin - plugin manager
 Bundle 'gmarik/vundle'
 " download color theme
@@ -20,12 +21,22 @@ Bundle 'tomasr/molokai'
 Bundle 'vim-scripts/mru.vim'
 
 " Vim airline - more awesome than just status line
+Bundle 'korney4eg/vim-chef-snippets'
+" snippets for chef
 Bundle 'bling/vim-airline'
 
 " show git status in file
 Bundle 'airblade/vim-gitgutter'
 " HTML, CSS edititon
 "Bundle 'mattn/zencoding-vim'
+" Use chef 
+Bundle 'korney4eg/vim-chef'
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'ngmy/vim-rubocop'
+Bundle 'scrooloose/nerdtree'
+
+syntax on
 
 "Markdown
 Plugin 'godlygeek/tabular'
