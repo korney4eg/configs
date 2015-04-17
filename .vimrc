@@ -31,6 +31,10 @@ Bundle 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
+"Fugitive - using git inside vim
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+
 "Bundle 'vim-scripts/taglist.vim'
 "Bundle 'majutsushi/tagbar'
 "For python programming
