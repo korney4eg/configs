@@ -199,7 +199,8 @@ function space
 	du $put -s | sort -g| awk '{print $1/1024 " MB","\t"$2}'
 }
 #files=(/usr/share/cowsay/cows/*);cowsay -f `printf "%s\n" "${files[RANDOM % ${#files}]}"` "`fortune`"
-
+source ~/configs/git-prompt.sh
+/home/C5190163/configs/git-prompt.sh
 
 # less color variables
 export LESS_TERMCAP_mb=$'\E[01;31m'
