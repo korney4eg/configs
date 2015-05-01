@@ -213,7 +213,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 export HISTCONTROL=ignoredups
 
-export EDITOR= vim
+export EDITOR=vim
 export PATH=$PATH:~/bin/
 
 
