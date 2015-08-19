@@ -33,6 +33,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'korney4eg/vim-chef'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 
 syntax on
 
@@ -94,7 +95,9 @@ set wrap
 :set ruler
 "filetype plugin on
 " Всегда показывать строку статуса
- set laststatus=2 
+set laststatus=2 
+set wildmenu
+set wildmode=list:longest,full
 " " Выключить линейку
  set noruler
  "    %f - путь к редактируемому файлу
