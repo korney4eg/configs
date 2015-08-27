@@ -37,6 +37,7 @@ Plugin 'scrooloose/syntastic'
 
 syntax on
 
+Plugin 'kien/ctrlp.vim'
 "Markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
