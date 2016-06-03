@@ -200,7 +200,6 @@ function space
 }
 #files=(/usr/share/cowsay/cows/*);cowsay -f `printf "%s\n" "${files[RANDOM % ${#files}]}"` "`fortune`"
 source ~/configs/git-prompt.sh
-/home/C5190163/configs/git-prompt.sh
 
 # less color variables
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -238,3 +237,10 @@ else \
 fi)'
 
 export TERM='xterm-color'
+SSHAGENT=/usr/bin/ssh-agent
+SSHAGENTARGS="-s"
+if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
+	eval `$SSHAGENT $SSHAGENTARGS`
+	trap "kill $SSH_AGENT_PID" 0
+fi
+ssh-add
