@@ -45,6 +45,10 @@ Plugin 'plasticboy/vim-markdown'
 "Fugitive - using git inside vim
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+"Plugin 'chase/vim-ansible-yaml'
+Plugin 'MicahElliott/Rocannon'
 
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'majutsushi/tagbar'
@@ -113,11 +117,38 @@ set wildmode=list:longest,full
  "set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ \ %l,%c\ %P
  "set statusline=%<%1*%f%h%m%r%*\ %b\ %2*%{&encoding}%*\ \ %l,%c\ %P
  set statusline=%<[%n]\ %f\ %m%r%h%w\ %y\ %{&fileencoding}%=%b\ \ \ %c/%v\ %l/%L\ \ %P\ %a
+ set list
  colorscheme molokai
  " for python
- autocmd FileType html setlocal shiftwidth=2 tabstop=2
  autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+ autocmd FileType * set tabstop=2|set shiftwidth=2|set noexpandtab
+ autocmd BufRead,BufNewFile ~/work/cloud-ci/*.yml set ft=ansible
+ autocmd BufRead,BufNewFile *.yaml set ft=ansible
+ autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
+ autocmd FileType ansible setlocal expandtab shiftwidth=2 softtabstop=2
  autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
 
  "Set configuration to display tab names
  let g:airline#extensions#tabline#enabled = 1
+ let g:airline#extensions#tabline#buffer_nr_show = 1 
+:nnoremap <C-L> :bnext<CR>
+:nnoremap <C-H> :bprevious<CR>
+
+" Highlight lines longer 80 chars
+set colorcolumn=81
+let g:rocannon_bypass_colorscheme = 1
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+
+" Close all open buffers on entering a window if the only
+" buffer that's left is the NERDTree buffer
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
