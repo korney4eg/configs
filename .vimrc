@@ -49,6 +49,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 "Plugin 'chase/vim-ansible-yaml'
 Plugin 'MicahElliott/Rocannon'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'qpkorr/vim-bufkill'
+Plugin 'Shougo/neocomplcache'
+Plugin 'ConradIrwin/vim-bracketed-paste'
 
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'majutsushi/tagbar'
@@ -121,9 +125,9 @@ set wildmode=list:longest,full
  colorscheme molokai
  " for python
  autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
- autocmd FileType * set tabstop=2|set shiftwidth=2|set noexpandtab
- autocmd BufRead,BufNewFile ~/work/cloud-ci/*.yml set ft=ansible
+ autocmd FileType * set tabstop=2|set shiftwidth=2|set expandtab
  autocmd BufRead,BufNewFile *.yaml set ft=ansible
+ autocmd BufRead,BufNewFile *.yml set ft=ansible
  autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
  autocmd FileType ansible setlocal expandtab shiftwidth=2 softtabstop=2
  autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
@@ -137,9 +141,9 @@ set wildmode=list:longest,full
 " Highlight lines longer 80 chars
 set colorcolumn=81
 let g:rocannon_bypass_colorscheme = 1
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+"autocmd VimEnter * NERDTree
+"autocmd VimEnter * wincmd p
+"autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
 
 " Close all open buffers on entering a window if the only
 " buffer that's left is the NERDTree buffer
@@ -152,3 +156,12 @@ function! s:CloseIfOnlyNerdTreeLeft()
     endif
   endif
 endfunction
+
+
+if has('gui_running')
+  if has('gui_win32')
+    set guifont=DejaVu_Sans_Mono:h13:cANSI
+  else
+    set guifont=DejaVu\ Sans\ Mono\ 13
+  endif
+endif
