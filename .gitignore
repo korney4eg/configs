@@ -1,2 +1,4 @@
 #ignoring vim backup files
 *~
+# vim temp files
+*.swp
