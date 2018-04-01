@@ -107,6 +107,7 @@ set wrap
 :set ruler
 "filetype plugin on
 " Всегда показывать строку статуса
+set noswapfile
 set laststatus=2 
 set wildmenu
 set wildmode=list:longest,full
