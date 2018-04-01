@@ -31,9 +31,12 @@ Plugin 'airblade/vim-gitgutter'
 "Plugin 'mattn/zencoding-vim'
 " Use chef 
 Plugin 'korney4eg/vim-chef'
+Plugin 'fatih/vim-go'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-commentary'
 
 syntax on
 
@@ -51,7 +54,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'MicahElliott/Rocannon'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'qpkorr/vim-bufkill'
-Plugin 'Shougo/neocomplcache'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 
 "Plugin 'vim-scripts/taglist.vim'
