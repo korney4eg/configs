@@ -19,6 +19,8 @@ then
 else
 	PACKMAN='yum'
 fi
+
+alias deploy_vervedea='berks vendor cookbooks && chef-client  --listen -z vervedea.rb'
 #=========================  A L I A S E S ============================
 
 # aptitude aliases
