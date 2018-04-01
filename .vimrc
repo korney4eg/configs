@@ -135,6 +135,11 @@ set wildmode=list:longest,full
  autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
  autocmd FileType ansible setlocal expandtab shiftwidth=2 softtabstop=2
  autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
+ autocmd FileType go setlocal nolist
+
+
+
+ autocmd BufNewFile **/_drafts/*.md 0r ~/configs/.vim/templates/jekyll_draft.md
 
  "Set configuration to display tab names
  let g:airline#extensions#tabline#enabled = 1
