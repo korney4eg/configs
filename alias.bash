@@ -61,7 +61,7 @@ alias gd='git diff '
 alias gco='git checkout '
 
 #ls aliases
-#alias ls='ls --color=always'
+alias ls='ls --color=always'
 alias ll='ls -lFG'
 alias la='ls -A'
 alias l='ls -CF'
