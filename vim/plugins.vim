@@ -5,7 +5,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " Common plugins:
 " for using snippets
-Plugin 'msanders/snipmate.vim'
+" Plugin 'msanders/snipmate.vim'
 " voundle plugin - plugin manager
 Plugin 'gmarik/vundle'
 " download color theme
@@ -16,7 +16,7 @@ Plugin 'tomasr/molokai'
 " Plugin 'vim-scripts/mru.vim'
 
 " Vim airline - more awesome than just status line
-Plugin 'korney4eg/vim-chef-snippets'
+" Plugin 'korney4eg/vim-chef-snippets'
 " snippets for chef
 Plugin 'bling/vim-airline'
 
@@ -55,6 +55,7 @@ Plugin 'qpkorr/vim-bufkill'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 
+Plugin 'hashivim/vim-terraform'
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'majutsushi/tagbar'
 "For python programming

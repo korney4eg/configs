@@ -33,5 +33,5 @@ function! Tab_Or_Complete()
     return "\<Tab>"
   endif
 endfunction
-:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
