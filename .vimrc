@@ -23,8 +23,9 @@ filetype plugin indent on
 
  autocmd BufNewFile **/_drafts/*.md 0r ~/configs/.vim/templates/jekyll_draft.md
 
-:nnoremap <C-L> :bnext<CR>
-:nnoremap <C-H> :bprevious<CR>
+autocmd VimResized * :wincmd =
+:nnoremap <C-;> :bnext<CR>
+:nnoremap <C-g> :bprevious<CR>
 
 function! Tab_Or_Complete()
   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
