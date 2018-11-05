@@ -33,6 +33,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
+Plugin 'misterbuckley/vim-definitive'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
+let g:session_autosave = 'yes'
 
 syntax on
 
@@ -56,6 +61,7 @@ Plugin 'qpkorr/vim-bufkill'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 
 Plugin 'hashivim/vim-terraform'
+Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'vim-scripts/taglist.vim'
 "Plugin 'majutsushi/tagbar'
 "For python programming
