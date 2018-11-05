@@ -20,7 +20,7 @@ else
 	PACKMAN='yum'
 fi
 
-alias deploy_vervedea='berks vendor cookbooks && chef-client  --listen -z vervedea.rb'
+alias deploy_vervedea='berks vendor cookbooks && knife zero converge "name:vervedea" --ssh-user root --override-runlist vervedea,locale,vervedea::ssl_cert,vervedea::site-crawler,vervedea::makvaz'
 #=========================  A L I A S E S ============================
 
 # aptitude aliases
@@ -77,4 +77,7 @@ alias rm='rm -i'
 
 alias mounthdd='sudo /usr/local/bin/ntfs-3g /dev/disk2s1 /Volumes/NTFS -olocal -oallow_other'
 alias umounthdd='sudo umount /Volumes/NTFS'
+
+# Run tmux in 256 colors mode
+alias tmux='tmux -2'
 #-------------------------------------------------------------
