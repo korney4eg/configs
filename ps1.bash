@@ -19,7 +19,7 @@ fi
 export PS1=$IBlack$Time24h$Color_Off'$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
-  if [ "$?" -eq "0" ]; then \
+  if [[ -z $(git status -s) ]]; then \
     # @4 - Clean repository - nothing to commit
     echo "'$BGreen'"$(__git_ps1 " (%s)"); \
   else \
