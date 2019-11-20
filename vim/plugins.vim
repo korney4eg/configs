@@ -1,70 +1,138 @@
-set rtp+=~/.vim/bundle/vundle/
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" set rtp+=~/.vim/bundle/vundle/
 " just before this run:
 " git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle/
 
-call vundle#rc()
+call plug#begin('~/.vim/plugged')
 " Common plugins:
 " for using snippets
-" Plugin 'msanders/snipmate.vim'
+" Plug 'msanders/snipmate.vim'
 " voundle plugin - plugin manager
-Plugin 'gmarik/vundle'
+Plug 'gmarik/vundle'
 " download color theme
-Plugin 'tomasr/molokai'
+Plug 'tomasr/molokai'
+Plug 'arcticicestudio/nord-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'lifepillar/vim-solarized8'
 " Most recent opened files
 " Usage:
 " :MRU - will open most edited files
-" Plugin 'vim-scripts/mru.vim'
+" Plug 'vim-scripts/mru.vim'
 
 " Vim airline - more awesome than just status line
-" Plugin 'korney4eg/vim-chef-snippets'
+" Plug 'korney4eg/vim-chef-snippets'
 " snippets for chef
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
+Plug 'mhinz/vim-startify'
 
 " show git status in file
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " HTML, CSS edititon
-"Plugin 'mattn/zencoding-vim'
+"Plug 'mattn/zencoding-vim'
 " Use chef 
-Plugin 'korney4eg/vim-chef'
-Plugin 'fatih/vim-go'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'ngmy/vim-rubocop'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-commentary'
-Plugin 'misterbuckley/vim-definitive'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
+Plug 'korney4eg/vim-chef'
+Plug 'rodjek/vim-puppet'
+Plug 'andrewstuart/vim-kubernetes'
+Plug 'fatih/vim-go'
+Plug 'vim-ruby/vim-ruby'
+Plug 'ngmy/vim-rubocop'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/vim-easy-align'
+Plug 'misterbuckley/vim-definitive'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'cespare/vim-toml'
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
 let g:session_autosave = 'yes'
 
 syntax on
 
-" Plugin 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
 "Markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-" Plugin 'iamcco/markdown-preview'
-" Plugin 'JamshedVesuna/vim-markdown-preview'
+" Plug '/usr/local/opt/fzf'
+set rtp+=/usr/local/opt/fzf
+
+Plug 'junegunn/fzf.vim'
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+
+Plug 'godlygeek/tabular'
+Plug 'goirijo/vim-jgg-colorscheme'
+Plug 'plasticboy/vim-markdown'
+Plug 'vim-scripts/bandit.vim'
+" Plug 'iamcco/markdown-preview'
+" Plug 'JamshedVesuna/vim-markdown-preview'
 
 "Fugitive - using git inside vim
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-"Plugin 'chase/vim-ansible-yaml'
-Plugin 'MicahElliott/Rocannon'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'qpkorr/vim-bufkill'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'ConradIrwin/vim-bracketed-paste'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+"Plug 'chase/vim-ansible-yaml'
+" Plug 'MicahElliott/Rocannon'
+Plug 'jiangmiao/auto-pairs'
+Plug 'qpkorr/vim-bufkill'
+Plug 'ryanoasis/vim-devicons'
+Plug 'ConradIrwin/vim-bracketed-paste'
 
-Plugin 'hashivim/vim-terraform'
-Plugin 'christoomey/vim-tmux-navigator'
-"Plugin 'vim-scripts/taglist.vim'
-"Plugin 'majutsushi/tagbar'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
+Plug 'pseewald/nerdtree-tagbar-combined'
+Plug 'vim-scripts/taghighlight'
+Plug 'majutsushi/tagbar'
+
+Plug 'tyru/open-browser.vim'
+Plug 'aklt/plantuml-syntax'
+Plug 'weirongxu/plantuml-previewer.vim'
+
+call plug#end()
+let g:terraform_fmt_on_save=1
+let g:terraform_align=1
+
+au FileType markdown vmap \<Bslash> :EasyAlign*<Bar><Enter>
+xmap ga <Plug>(EasyAlign)
+" Plug 'christoomey/vim-tmux-navigator'
+"Plug 'vim-scripts/taglist.vim'
+"Plug 'majutsushi/tagbar'
 "For python programming
-"Plugin 'klen/python-mode.git'
+"Plug 'klen/python-mode.git'
 "For lua programming
-"Plugin 'xolox/vim-lua-inspect'
+"Plug 'xolox/vim-lua-inspect'
