@@ -29,7 +29,6 @@ Plug 'lifepillar/vim-solarized8'
 " Plug 'korney4eg/vim-chef-snippets'
 " snippets for chef
 Plug 'bling/vim-airline'
-Plug 'mhinz/vim-startify'
 
 " show git status in file
 Plug 'airblade/vim-gitgutter'

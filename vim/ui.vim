@@ -21,6 +21,7 @@ set smartcase		" Do smart case matching
 set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden             " Hide buffers when they are abandoned
+set nofoldenable
 "set mouse=a		" Enable mouse usage (all modes)
 set number
 " Source a global configuration file if available
@@ -69,6 +70,7 @@ if has('gui_running')
   if has('gui_win32')
     set guifont=DejaVu_Sans_Mono:h13:cANSI
   else
-    set guifont=DejaVu_Sans_Mono:h13
+    " set guifont=DejaVu_Sans_Mono:h15
+    set guifont=Hack\ Nerd\ Font:h15
   endif
 endif
