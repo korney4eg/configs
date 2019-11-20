@@ -1,0 +1,15 @@
+--recurse
+--exclude=.git
+--exclude=.terr_modules
+--langdef=terraform
+--langmap=terraform:.tf.tfvars
+--regex-terraform=/^[[:space:]]*resource[[:space:]]*"([^"]*)"[[:space:]]*"([^"]*)"/\2/r,Resource/
+--regex-terraform=/^[[:space:]]*resource[[:space:]]*"([^"]*)"[[:space:]]*"([^"]*)"/\1.\2/r,Resource/
+--regex-terraform=/^data[[:space:]]*"([^"]*)"[[:space:]]*"([^"]*)"/\2/d,Data/
+--regex-terraform=/^[[:space:]]*variable[[:space:]]*"([^"]*)"/\1/v,Variable/
+--regex-terraform=/^[[:space:]]*variable[[:space:]]*"([^"]*)"/var.\1/v,Variable/
+--regex-terraform=/^[[:space:]]*provider[[:space:]]*"([^"]*)"/\1/p,Provider/
+--regex-terraform=/^[[:space:]]*module[[:space:]]*"([^"]*)"/\1/m,Module/
+--regex-terraform=/^[[:space:]]*module[[:space:]]*"([^"]*)"/module.\1/m,Module/
+--regex-terraform=/^[[:space:]]*output[[:space:]]*"([^"]*)"/\1/o,Output/
+--regex-terraform=/^([a-z0-9_]+)[[:space:]]*=/\1/f,TFVar/
