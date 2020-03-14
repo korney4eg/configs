@@ -10,8 +10,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 " Common plugins:
-" for using snippets
-" Plug 'msanders/snipmate.vim'
 " voundle plugin - plugin manager
 Plug 'gmarik/vundle'
 " download color theme
@@ -26,8 +24,6 @@ Plug 'lifepillar/vim-solarized8'
 " Plug 'vim-scripts/mru.vim'
 
 " Vim airline - more awesome than just status line
-" Plug 'korney4eg/vim-chef-snippets'
-" snippets for chef
 Plug 'bling/vim-airline'
 
 " show git status in file
@@ -36,9 +32,10 @@ Plug 'airblade/vim-gitgutter'
 "Plug 'mattn/zencoding-vim'
 " Use chef 
 Plug 'korney4eg/vim-chef'
-Plug 'rodjek/vim-puppet'
 Plug 'andrewstuart/vim-kubernetes'
 Plug 'fatih/vim-go'
+" Plug 'nsf/gocode'
+" Plug 'vim-jp/vim-go-extra'
 Plug 'vim-ruby/vim-ruby'
 Plug 'ngmy/vim-rubocop'
 Plug 'scrooloose/nerdtree'
@@ -52,18 +49,6 @@ Plug 'xolox/vim-session'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'cespare/vim-toml'
 " Track the engine.
-Plug 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 
 let g:session_autosave = 'yes'
@@ -104,6 +89,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+
 "Plug 'chase/vim-ansible-yaml'
 " Plug 'MicahElliott/Rocannon'
 Plug 'jiangmiao/auto-pairs'
@@ -111,11 +97,54 @@ Plug 'qpkorr/vim-bufkill'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"==== Autocompletion plugins
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'mattn/vim-lsp-settings'
+source ~/configs/vim/lsp.vim
+Plug 'prabirshrestha/vim-lsp'
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+
+" Terraform
+" if executable('terraform-lsp')
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'terraform-language-server',
+"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'terraform-lsp']},
+"         \ 'whitelist': ['terraform'],
+"         \ })
+"   endif
 Plug 'hashivim/vim-terraform'
+Plug 'vim-syntastic/syntastic'
 Plug 'juliosueiras/vim-terraform-completion'
+
+
+" Vim
+Plug 'Shougo/neco-vim'
+Plug 'prabirshrestha/asyncomplete-necovim.vim'
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
+    \ 'name': 'necovim',
+    \ 'whitelist': ['vim'],
+    \ 'completor': function('asyncomplete#sources#necovim#completor'),
+    \ }))
+
+" " Omni completion
+" Plug 'yami-beta/asyncomplete-omni.vim'
+" call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+" \ 'name': 'omni',
+" \ 'whitelist': ['*'],
+" \ 'blacklist': ['c', 'cpp', 'html'],
+" \ 'completor': function('asyncomplete#sources#omni#completor')
+" \  }))
+
+"==== Autocompletion ends
+
+
 Plug 'pseewald/nerdtree-tagbar-combined'
-Plug 'vim-scripts/taghighlight'
+" Plug 'vim-scripts/taghighlight'
 Plug 'majutsushi/tagbar'
 
 Plug 'tyru/open-browser.vim'
@@ -128,7 +157,6 @@ let g:terraform_align=1
 
 au FileType markdown vmap \<Bslash> :EasyAlign*<Bar><Enter>
 xmap ga <Plug>(EasyAlign)
-" Plug 'christoomey/vim-tmux-navigator'
 "Plug 'vim-scripts/taglist.vim'
 "Plug 'majutsushi/tagbar'
 "For python programming

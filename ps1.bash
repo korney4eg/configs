@@ -30,3 +30,7 @@ else \
   # @2 - Prompt when not in GIT repo
   echo " '$BBlue$PathShort$Color_Off'\$ "; \
 fi)'
+
+export PS1='$(gbt $?)'
+export GBT_CAR_HOSTNAME_DISPLAY='0'
+export GBT_CAR_DIR_DEPTH='2'

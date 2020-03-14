@@ -20,7 +20,7 @@ else
 	PACKMAN='yum'
 fi
 
-alias deploy_vervedea='berks vendor cookbooks && knife zero converge "name:vervedea" --ssh-user root --override-runlist vervedea,locale,vervedea::ssl_cert,vervedea::site-crawler,vervedea::makvaz'
+alias deploy_vervedea='berks vendor cookbooks && knife role from file roles/vervedea.json && knife zero converge "name:vervedea.com" --ssh-user ubuntu --override-runlist role[vervedea]'
 #=========================  A L I A S E S ============================
 
 # aptitude aliases
@@ -48,7 +48,14 @@ alias df='df -h'
 
 # free RAM
 alias free="free -m"
-
+function g() {
+  if [[ $# > 0 ]]; then
+    git $@
+  else
+    git status
+  fi
+}
+complete -F _git g
 #git aliases
 alias gs='git status '
 alias gu='git pull upstream '
