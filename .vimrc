@@ -11,23 +11,11 @@ set splitbelow
 source ~/configs/vim/plugins.vim
 source ~/configs/vim/russian.vim
 source ~/configs/vim/ui.vim
+source ~/configs/vim/functions.vim
 filetype plugin indent on
-let g:session_autoload = 'no'
+" let g:session_autoload = 'no'
 
 
-" augroup DefaultColor
-"     au!  
-"     autocmd FileType * colorscheme nord
-"     autocmd BufEnter * set background=dark
-" augroup END  
-" augroup VimMarkdownColor  
-"     au!  
-"     autocmd FileType markdown colorscheme solarized8_flat  
-"     autocmd BufEnter *.md set background=light
-" augroup END  
-" autocmd BufEnter * colorscheme nord
-" autocmd BufEnter *.md colorscheme solarized8_flat
-" autocmd BufEnter *.md background=light
  " for python
  autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
  autocmd FileType * set tabstop=2|set shiftwidth=2|set expandtab
@@ -49,18 +37,18 @@ au BufRead,BufNewFile *.tfstate.backup setlocal filetype=json
  autocmd BufNewFile **/_drafts/*.md 0r ~/configs/.vim/templates/jekyll_draft.md
 
 autocmd VimResized * :wincmd =
-:nnoremap <C-l> :bnext<CR>
-:nnoremap <C-h> :bprevious<CR>
+:nnoremap <C-l> :call NextBuffer()<CR>:call SyncTree()<CR>
+:nnoremap <C-h> :call PreviousBuffer()<CR>:call SyncTree()<CR>
 cnoreabbrev ц w
 cnoreabbrev у e
 
-function! Tab_Or_Complete()
-  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    return "\<C-N>"
-  else
-    return "\<Tab>"
-  endif
-endfunction
-inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+" function! Tab_Or_Complete()
+"   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+"     return "\<C-N>"
+"   else
+"     return "\<Tab>"
+"   endif
+" endfunction
+" inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
-com! FormatJSON %!python -m json.tool
+" com! FormatJSON %!python -m json.tool
