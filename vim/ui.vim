@@ -64,7 +64,7 @@ set wildmode=list:longest,full
  let g:airline#extensions#tabline#enabled = 1
  let g:airline#extensions#tabline#buffer_nr_show = 1 
 " Highlight lines longer 80 chars
-set colorcolumn=81
+" set colorcolumn=81
 let g:rocannon_bypass_colorscheme = 1
 if has('gui_running')
   if has('gui_win32')
@@ -72,5 +72,7 @@ if has('gui_running')
   else
     " set guifont=DejaVu_Sans_Mono:h15
     set guifont=Hack\ Nerd\ Font:h15
+    " set macligatures
+    " set guifont=Fira\ Code:h15
   endif
 endif
