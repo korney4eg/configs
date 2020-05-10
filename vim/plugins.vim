@@ -11,36 +11,24 @@ endif
 call plug#begin('~/.vim/plugged')
 " Common plugins:
 " voundle plugin - plugin manager
-Plug 'gmarik/vundle'
-" download color theme
 Plug 'tomasr/molokai'
-Plug 'arcticicestudio/nord-vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'lifepillar/vim-solarized8'
-" Most recent opened files
-" Usage:
-" :MRU - will open most edited files
-" Plug 'vim-scripts/mru.vim'
-
 " Vim airline - more awesome than just status line
 Plug 'bling/vim-airline'
 
 " show git status in file
 Plug 'airblade/vim-gitgutter'
-" HTML, CSS edititon
-"Plug 'mattn/zencoding-vim'
 " Use chef 
 Plug 'korney4eg/vim-chef'
-Plug 'andrewstuart/vim-kubernetes'
-Plug 'fatih/vim-go'
+" Plug 'andrewstuart/vim-kubernetes'
+" Plug 'fatih/vim-go'
 " Plug 'nsf/gocode'
 " Plug 'vim-jp/vim-go-extra'
+Plug 'hashivim/vim-terraform'
 Plug 'vim-ruby/vim-ruby'
+Plug 'govim/govim'
 Plug 'ngmy/vim-rubocop'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/vim-easy-align'
 Plug 'misterbuckley/vim-definitive'
@@ -58,29 +46,12 @@ syntax on
 " Plug 'kien/ctrlp.vim'
 "Markdown
 " Plug '/usr/local/opt/fzf'
-set rtp+=/usr/local/opt/fzf
-
+" set rtp+=/usr/local/opt/fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
 
-
-Plug 'godlygeek/tabular'
-Plug 'goirijo/vim-jgg-colorscheme'
+" Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'vim-scripts/bandit.vim'
 " Plug 'iamcco/markdown-preview'
 " Plug 'JamshedVesuna/vim-markdown-preview'
 
@@ -90,76 +61,90 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 
-"Plug 'chase/vim-ansible-yaml'
-" Plug 'MicahElliott/Rocannon'
 Plug 'jiangmiao/auto-pairs'
 Plug 'qpkorr/vim-bufkill'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 "==== Autocompletion plugins
-Plug 'prabirshrestha/asyncomplete.vim'
+set completeopt+=longest,menuone,noselect
+
 Plug 'prabirshrestha/async.vim'
-Plug 'mattn/vim-lsp-settings'
-source ~/configs/vim/lsp.vim
 Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> <f2> <plug>(lsp-rename)
+    " refer to doc to add more commands
+endfunction
+if executable('docker-langserver')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'docker-langserver',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'docker-langserver --stdio']},
+        \ 'whitelist': ['dockerfile'],
+        \ })
+endif
+
+if executable('yaml-language-server')
+  augroup LspYaml
+   autocmd!
+   autocmd User lsp_setup call lsp#register_server({
+       \ 'name': 'yaml-language-server',
+       \ 'cmd': {server_info->['yaml-language-server', '--stdio']},
+       \ 'whitelist': ['yaml', 'yaml.ansible','yaml.kubernetes'],
+       \ 'workspace_config': {
+       \   'yaml': {
+       \     'validate': v:true,
+       \     'hover': v:true,
+       \     'completion': v:true,
+       \     'customTags': [],
+       \     'schemas': {
+       \       'kubernetes': ['/kubernetes.yml'],
+       \       'https://raw.githubusercontent.com/docker/cli/master/cli/compose/schema/data/config_schema_v3.9.json': ['/docker-compose.yml'],
+       \      },
+       \     'schemaStore': { 'enable': v:true },
+       \   }
+       \ }
+       \})
+  augroup END
+endif
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+let g:asyncomplete_auto_popup = 0
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ asyncomplete#force_refresh()
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <C-space> <C-x><C-o>
 
-" Terraform
-" if executable('terraform-lsp')
-"     au User lsp_setup call lsp#register_server({
-"         \ 'name': 'terraform-language-server',
-"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'terraform-lsp']},
-"         \ 'whitelist': ['terraform'],
-"         \ })
-"   endif
-Plug 'hashivim/vim-terraform'
+set completeopt-=preview
+
 Plug 'vim-syntastic/syntastic'
-Plug 'juliosueiras/vim-terraform-completion'
-
-
-" Vim
-Plug 'Shougo/neco-vim'
-Plug 'prabirshrestha/asyncomplete-necovim.vim'
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
-    \ 'name': 'necovim',
-    \ 'whitelist': ['vim'],
-    \ 'completor': function('asyncomplete#sources#necovim#completor'),
-    \ }))
-
-" " Omni completion
-" Plug 'yami-beta/asyncomplete-omni.vim'
-" call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
-" \ 'name': 'omni',
-" \ 'whitelist': ['*'],
-" \ 'blacklist': ['c', 'cpp', 'html'],
-" \ 'completor': function('asyncomplete#sources#omni#completor')
-" \  }))
-
-"==== Autocompletion ends
-
-
-Plug 'pseewald/nerdtree-tagbar-combined'
-" Plug 'vim-scripts/taghighlight'
-Plug 'majutsushi/tagbar'
 
 Plug 'tyru/open-browser.vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'weirongxu/plantuml-previewer.vim'
 
 call plug#end()
-let g:terraform_fmt_on_save=1
-let g:terraform_align=1
+" let g:terraform_fmt_on_save=1
+" let g:terraform_align=1
 
 au FileType markdown vmap \<Bslash> :EasyAlign*<Bar><Enter>
 xmap ga <Plug>(EasyAlign)
-"Plug 'vim-scripts/taglist.vim'
-"Plug 'majutsushi/tagbar'
-"For python programming
-"Plug 'klen/python-mode.git'
-"For lua programming
-"Plug 'xolox/vim-lua-inspect'
