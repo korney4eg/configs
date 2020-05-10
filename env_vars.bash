@@ -12,6 +12,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export HISTCONTROL=ignoredups
 export EDITOR=vim
 export PATH=$PATH:~/bin/
+export PATH=$PATH:~/.chefdk/gem/ruby/2.4.0/bin
 export TERM='xterm-color'
 export GOPATH=$HOME/projects/go-workspace # don't forget to change your path correctly!
 export GOROOT=/usr/local/opt/go/libexec
