@@ -15,7 +15,7 @@ function space
 function aws_encrypt
 {
   ENVIRONMENT=$1
-  KEYWORD=$2
+  KEYWORD=$(echo "$2"|base64)
   aws-okta exec "okta-${ENVIRONMENT}" -- aws kms encrypt --key-id alias/applications --plaintext "${KEYWORD}" --output text --query CiphertextBlob
 }
 
@@ -29,5 +29,6 @@ function aws_terraform
   else
     ENVIRONMENT="dev"
   fi
+  APPROVAL=RTKS0000001
   VERSION="${VERSION}" ENV="${ENVIRONMENT}" LANDSCAPE="${LANDSCAPE}" aws-okta exec "okta-${ENVIRONMENT}" -- make "${ACTION}"
 }

@@ -36,7 +36,7 @@ endfunction
 " Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
 " file, and we're not in vimdiff
 function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+  if bufname('') !~ '^.*\.git\/index$' && &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
     NERDTreeFind
     wincmd p
   endif
@@ -46,7 +46,7 @@ endfunction
 autocmd BufRead * call SyncTree()
 
 function! IsValidBuffer(index)
-    return !empty(bufname(a:index)) && getbufvar(a:index, '&buftype') == ''
+    return !empty(bufname(a:index)) && getbufvar(a:index, '&buftype') == '' && bufname(a:index) !~ '^.*\.git\/.*$' && bufname(a:index) !~ '^.*fugitiveblame$'
 endfunction
 
 function! NextBuffer()
