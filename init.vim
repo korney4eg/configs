@@ -1,1 +1,1 @@
-
+filetype plugin indent on
