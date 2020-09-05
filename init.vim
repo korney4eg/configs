@@ -4,3 +4,4 @@ syntax on
 set hidden
 set path=.,,**
 set noswapfile
+set shiftwidth=2
