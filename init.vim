@@ -3,3 +3,4 @@ syntax on
 
 set hidden
 set path=.,,**
+set noswapfile
