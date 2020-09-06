@@ -5,3 +5,8 @@ set hidden
 set path=.,,**
 set noswapfile
 set shiftwidth=2
+
+" Mappings {{{
+imap jj <Esc>
+
+"}}
