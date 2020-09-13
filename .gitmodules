@@ -1,0 +1,21 @@
+[submodule ".vim/pack/bundle/opt/molokai"]
+	path = .vim/pack/bundle/opt/molokai
+	url = https://github.com/ueaner/molokai
+[submodule ".vim/pack/bundle/opt/nerdtree"]
+	path = .vim/pack/bundle/opt/nerdtree
+	url = https://github.com/preservim/nerdtree
+[submodule ".vim/pack/bundle/opt/vim-airline"]
+	path = .vim/pack/bundle/opt/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule ".vim/pack/bundle/opt/vim-terragrunt"]
+	path = .vim/pack/bundle/opt/vim-terragrunt
+	url = https://github.com/rhadley-recurly/vim-terragrunt.git
+[submodule ".vim/pack/bundle/opt/vim-devicons"]
+	path = .vim/pack/bundle/opt/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons
+[submodule ".vim/pack/bundle/opt/vim-fugitive"]
+	path = .vim/pack/bundle/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule ".vim/pack/bundle/opt/vim-terraform"]
+	path = .vim/pack/bundle/opt/vim-terraform
+	url = https://github.com/hashivim/vim-terraform.git
