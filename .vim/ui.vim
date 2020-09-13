@@ -15,3 +15,6 @@ set statusline=%<[%n]\ %f\ %m%r%h%w\ %y\ %{&fileencoding}%=%b\ \ \ %c/%v\ %l/%L\
 
 set list
 set number
+
+set splitbelow
+
