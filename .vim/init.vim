@@ -1,5 +1,5 @@
 filetype plugin indent on
-source ~/.config/nvim/ui.vim
+source ~/configs/.vim/ui.vim
 set path=.,,**
 set noswapfile
 set shiftwidth=2
