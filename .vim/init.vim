@@ -18,13 +18,6 @@ imap jj <Esc>
 " set runtimepath^=~/configs/.vim/
 let $RTP=split(&runtimepath, ',')[0]
 
-" plugins
-packadd! nerdtree
-packadd! vim-airline
-packadd! vim-devicons
-packadd! vim-fugitive
-packadd! vim-terraform
-packadd! vim-terragrunt
 
 
 

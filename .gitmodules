@@ -1,21 +1,33 @@
-[submodule ".vim/pack/bundle/opt/molokai"]
-	path = .vim/pack/bundle/opt/molokai
+[submodule ".vim/pack/bundle/start/molokai"]
+	path = .vim/pack/bundle/start/molokai
 	url = https://github.com/ueaner/molokai
-[submodule ".vim/pack/bundle/opt/nerdtree"]
-	path = .vim/pack/bundle/opt/nerdtree
+[submodule ".vim/pack/bundle/start/nerdtree"]
+	path = .vim/pack/bundle/start/nerdtree
 	url = https://github.com/preservim/nerdtree
-[submodule ".vim/pack/bundle/opt/vim-airline"]
-	path = .vim/pack/bundle/opt/vim-airline
+[submodule ".vim/pack/bundle/start/vim-airline"]
+	path = .vim/pack/bundle/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
-[submodule ".vim/pack/bundle/opt/vim-terragrunt"]
-	path = .vim/pack/bundle/opt/vim-terragrunt
+[submodule ".vim/pack/bundle/start/vim-terragrunt"]
+	path = .vim/pack/bundle/start/vim-terragrunt
 	url = https://github.com/rhadley-recurly/vim-terragrunt.git
-[submodule ".vim/pack/bundle/opt/vim-devicons"]
-	path = .vim/pack/bundle/opt/vim-devicons
+[submodule ".vim/pack/bundle/start/vim-devicons"]
+	path = .vim/pack/bundle/start/vim-devicons
 	url = https://github.com/ryanoasis/vim-devicons
-[submodule ".vim/pack/bundle/opt/vim-fugitive"]
-	path = .vim/pack/bundle/opt/vim-fugitive
+[submodule ".vim/pack/bundle/start/vim-fugitive"]
+	path = .vim/pack/bundle/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule ".vim/pack/bundle/opt/vim-terraform"]
-	path = .vim/pack/bundle/opt/vim-terraform
+[submodule ".vim/pack/bundle/start/vim-terraform"]
+	path = .vim/pack/bundle/start/vim-terraform
 	url = https://github.com/hashivim/vim-terraform.git
+[submodule ".vim/pack/bundle/start/vim-markdown"]
+	path = .vim/pack/bundle/start/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
+[submodule ".vim/pack/bundle/start/-f"]
+	path = .vim/pack/bundle/start/-f
+	url = https://github.com/dense-analysis/ale
+[submodule ".vim/pack/bundle/start/ale"]
+	path = .vim/pack/bundle/start/ale
+	url = https://github.com/dense-analysis/ale
+[submodule ".vim/pack/bundle/start/ag"]
+	path = .vim/pack/bundle/start/ag
+	url = https://github.com/rking/ag.vim
