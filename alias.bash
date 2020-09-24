@@ -87,4 +87,7 @@ alias umounthdd='sudo umount /Volumes/NTFS'
 
 # Run tmux in 256 colors mode
 alias tmux='tmux -2'
+
+# VimR alias
+alias vimr='vimr --nvim '
 #-------------------------------------------------------------
