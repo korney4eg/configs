@@ -34,7 +34,8 @@ au BufRead,BufNewFile *.tfstate.backup setlocal filetype=json
 " set g:syntastic_puppet_checkers = ['puppet-lint']
 
 
- autocmd BufNewFile **/_drafts/*.md 0r ~/configs/.vim/templates/jekyll_draft.md
+autocmd BufNewFile **/_drafts/*.md 0r ~/configs/.vim/templates/jekyll_draft.md
+autocmd BufNewFile **/content/*.md 0r ~/configs/.vim/templates/gohugo_draft.md
 
 autocmd VimResized * :wincmd =
 :nnoremap <C-l> :call NextBuffer()<CR>:call SyncTree()<CR>
