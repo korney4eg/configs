@@ -7,30 +7,30 @@ PathFull="\W"
 NewLine="\n"
 Jobs="\j"
 
-#  Customize BASH PS1 prompt to show current GIT repository and branch.
-#  by Mike Stewart - http://MediaDoneRight.com
-# This PS1 snippet was adopted from code for MAC/BSD I saw from: http://allancraig.net/index.php?option=com_content&view=article&id=108:ps1-export-command-for-git&catid=45:general&Itemid=96
-# I tweaked it to work on UBUNTU 11.04 & 11.10 plus made it mo' better
-# set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-export PS1=$IBlack$Time24h$Color_Off'$(git branch &>/dev/null;\
-if [ $? -eq 0 ]; then \
-  echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
-  if [[ -z $(git status -s) ]]; then \
-    # @4 - Clean repository - nothing to commit
-    echo "'$BGreen'"$(__git_ps1 " (%s)"); \
-  else \
-    # @5 - Changes to working tree
-    echo "'$IRed'"$(__git_ps1 " {%s}"); \
-  fi) '$BBlue$PathShort$Color_Off'\$ "; \
-else \
-  # @2 - Prompt when not in GIT repo
-  echo " '$BBlue$PathShort$Color_Off'\$ "; \
-fi)'
+# export PS1=$IBlack$Time24h$Color_Off'$(git branch &>/dev/null;\
+# if [ $? -eq 0 ]; then \
+#   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
+#   if [[ -z $(git status -s) ]]; then \
+#     # @4 - Clean repository - nothing to commit
+#     echo "'$BGreen'"$(__git_ps1 " (%s)"); \
+#   else \
+#     # @5 - Changes to working tree
+#     echo "'$IRed'"$(__git_ps1 " {%s}"); \
+#   fi) '$BBlue$PathShort$Color_Off'\$ "; \
+# else \
+#   # @2 - Prompt when not in GIT repo
+#   echo " '$BBlue$PathShort$Color_Off'\$ "; \
+# fi)'
 
+# Show percentage of used disk space of the root partition
+export GBT_CAR_CUSTOM_TEXT_CMD='echo $AWS_PROFILE'
+# Display the car only if the percentage is above 90%
+# export GBT_CAR_CUSTOM_DISPLAY_CMD="pwd| grep -q '/work/'"
+export GBT_CARS='Status, Os, Hostname, Dir, Git,Custom, Sign'
 export PS1='$(gbt $?)'
 export GBT_CAR_HOSTNAME_DISPLAY='0'
 export GBT_CAR_DIR_DEPTH='2'
