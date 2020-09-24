@@ -46,7 +46,7 @@ endfunction
 autocmd BufRead * call SyncTree()
 
 function! IsValidBuffer(index)
-    return !empty(bufname(a:index)) && getbufvar(a:index, '&buftype') == '' && bufname(a:index) !~ '^.*\.git\/.*$' && bufname(a:index) !~ '^.*fugitiveblame$'
+    return !empty(bufname(a:index)) && getbufvar(a:index, '&buftype') == '' && bufname(a:index) !~ '^.*\.git\/.*$' && bufname(a:index) !~ '^.*fugitiveblame$' && buflisted(a:index)
 endfunction
 
 function! NextBuffer()
