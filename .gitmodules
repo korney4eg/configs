@@ -31,3 +31,6 @@
 [submodule ".vim/pack/bundle/start/ag"]
 	path = .vim/pack/bundle/start/ag
 	url = https://github.com/rking/ag.vim
+[submodule ".vim/pack/bundle/start/vim-go"]
+	path = .vim/pack/bundle/start/vim-go
+	url = https://github.com/fatih/vim-go
