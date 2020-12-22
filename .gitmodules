@@ -46,3 +46,12 @@
 [submodule ".vim/pack/bundle/start/vim-commentary"]
 	path = .vim/pack/bundle/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
+[submodule ".vim/pack/bundle/start/nvim-lspconfig"]
+	path = .vim/pack/bundle/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
+[submodule ".vim/pack/bundle/start/completion-nvim"]
+	path = .vim/pack/bundle/start/completion-nvim
+	url = https://github.com/nvim-lua/completion-nvim
+[submodule ".vim/pack/bundle/start/Vim-Jinja2-Syntax"]
+	path = .vim/pack/bundle/start/Vim-Jinja2-Syntax
+	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
