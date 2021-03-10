@@ -16,3 +16,7 @@ set number
 
 set splitbelow
 set splitright
+
+" git hightlight settings
+hi diffAdded cterm=bold ctermfg=DarkGreen
+hi diffRemoved cterm=bold ctermfg=DarkRed
