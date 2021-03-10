@@ -5,6 +5,10 @@ set noswapfile
 set shiftwidth=2
 " jump to other buffers without saving
 set hidden
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+set mouse=a
 
 
 " Mappings {{{

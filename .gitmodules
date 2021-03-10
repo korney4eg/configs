@@ -55,3 +55,9 @@
 [submodule ".vim/pack/bundle/start/Vim-Jinja2-Syntax"]
 	path = .vim/pack/bundle/start/Vim-Jinja2-Syntax
 	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
+[submodule ".vim/pack/bundle/start/ansible-vim"]
+	path = .vim/pack/bundle/start/ansible-vim
+	url = https://github.com/pearofducks/ansible-vim
+[submodule ".vim/pack/bundle/nvim-lspconfig"]
+	path = .vim/pack/bundle/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig
