@@ -91,3 +91,7 @@ alias tmux='tmux -2'
 # VimR alias
 alias vimr='vimr --nvim '
 #-------------------------------------------------------------
+# K8s
+alias k=kubectl
+complete -F __start_kubectl k
+alias kx=kubectx
