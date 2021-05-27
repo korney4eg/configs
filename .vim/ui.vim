@@ -20,3 +20,13 @@ set splitright
 " git hightlight settings
 hi diffAdded cterm=bold ctermfg=DarkGreen
 hi diffRemoved cterm=bold ctermfg=DarkRed
+
+" lsp configuration
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_virtual_text_prefix = ' '
+let g:diagnostic_insert_delay = 1
+
+call sign_define("LspDiagnosticsErrorSign", {"text" : "➤", "texthl" : "LspDiagnosticsError"})
+call sign_define("LspDiagnosticsWarningSign", {"text" : "➤", "texthl" : "LspDiagnosticsWarning"})
+call sign_define("LspDiagnosticsInformationSign", {"text" : "↬", "texthl" : "LspDiagnosticsInformation"})
+call sign_define("LspDiagnosticsHintSign", {"text" : "↬", "texthl" : "LspDiagnosticsHint"})

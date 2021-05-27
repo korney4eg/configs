@@ -61,3 +61,15 @@
 [submodule ".vim/pack/bundle/nvim-lspconfig"]
 	path = .vim/pack/bundle/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig
+[submodule ".vim/pack/bundle/start/gh.vim"]
+	path = .vim/pack/bundle/start/gh.vim
+	url = https://github.com/skanehira/gh.vim.git
+[submodule ".vim/pack/bundle/start/vim-codefmt"]
+	path = .vim/pack/bundle/start/vim-codefmt
+	url = https://github.com/google/vim-codefmt
+[submodule ".vim/pack/bundle/start/vim-maktaba"]
+	path = .vim/pack/bundle/start/vim-maktaba
+	url = https://github.com/google/vim-maktaba
+[submodule ".vim/pack/bundle/start/vim-glaive"]
+	path = .vim/pack/bundle/start/vim-glaive
+	url = https://github.com/google/vim-glaive
