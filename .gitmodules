@@ -34,9 +34,6 @@
 [submodule ".vim/pack/bundle/start/vim-commentary"]
 	path = .vim/pack/bundle/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
-[submodule ".vim/pack/bundle/start/nvim-lspconfig"]
-	path = .vim/pack/bundle/opt/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig
 [submodule ".vim/pack/bundle/start/completion-nvim"]
 	path = .vim/pack/bundle/start/completion-nvim
 	url = https://github.com/nvim-lua/completion-nvim
