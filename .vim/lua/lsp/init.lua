@@ -1,4 +1,5 @@
 require'lspconfig'.bashls.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.gopls.setup{}
 require'lspconfig'.vimls.setup{}
 require'lspconfig'.pyls.setup{}
 require'lspconfig'.terraformls.setup{}

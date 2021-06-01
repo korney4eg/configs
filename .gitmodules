@@ -58,9 +58,6 @@
 [submodule ".vim/pack/bundle/start/ansible-vim"]
 	path = .vim/pack/bundle/start/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim
-[submodule ".vim/pack/bundle/nvim-lspconfig"]
-	path = .vim/pack/bundle/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig
 [submodule ".vim/pack/bundle/start/gh.vim"]
 	path = .vim/pack/bundle/start/gh.vim
 	url = https://github.com/skanehira/gh.vim.git

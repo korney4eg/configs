@@ -69,3 +69,4 @@ endfunction
 " With this maps you can now toggle the terminal
 nnoremap <Leader>t :call MonkeyTerminalToggle()<cr>
 tnoremap <Esc> <C-\><C-n>
+tnoremap <Leader>t <C-\><C-n> :call MonkeyTerminalClose()<cr>

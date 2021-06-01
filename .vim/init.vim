@@ -1,11 +1,18 @@
 filetype plugin indent on
-source ~/configs/.vim/ui.vim
+
+packadd! ansible-vim
+packadd! nvim-lspconfig
+packadd! vim-jsonnet
+packadd! vim-markdown
+packadd! vim-terraform
+packadd! vim-terragrunt
 source ~/configs/.vim/plugin/formatting/formatting.vim
 source ~/configs/.vim/plugin/functions/main.vim
 source ~/configs/.vim/plugin/lsp/autocmd.vim
 source ~/configs/.vim/plugin/mappings/leader.vim
 source ~/configs/.vim/plugin/mappings/lsp.vim
 source ~/configs/.vim/plugin/terminal/hide_terminal.vim
+source ~/configs/.vim/ui.vim
 
 
 
