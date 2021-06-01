@@ -32,6 +32,6 @@ export GBT_CAR_CUSTOM_TEXT_CMD='echo $AWS_PROFILE'
 # export GBT_CAR_CUSTOM_DISPLAY_CMD="pwd| grep -q '/work/'"
 export GBT_CARS='Status, Os, Hostname, Dir, Git,Custom, Kubectl, Sign'
 export GBT_CARS='Status, Os, Hostname, Dir, Git, Kubectl, Sign'
-export PS1='$(gbt $?)'
+export PS1='$(gbt $?)\n> '
 export GBT_CAR_HOSTNAME_DISPLAY='0'
 export GBT_CAR_DIR_DEPTH='2'

@@ -20,7 +20,7 @@ else
 	PACKMAN='yum'
 fi
 
-alias deploy_vervedea='berks vendor cookbooks && knife role from file roles/vervedea.json && knife zero converge "name:vervedea.com" --ssh-user ubuntu --override-runlist role[vervedea]'
+alias deploy_vervedea='ansible-playbook provision.yaml -e variables.yaml -i hosts.yaml'
 #=========================  A L I A S E S ============================
 
 # aptitude aliases
@@ -95,3 +95,4 @@ alias vimr='vimr --nvim '
 alias k=kubectl
 complete -F __start_kubectl k
 alias kx=kubectx
+alias deploy_jekyll="docker run --name newblog -d --rm --volume=\"$PWD:/srv/jekyll\" -p 4000:4000 -it jekyll/jekyll jekyll serve --watch --drafts"
