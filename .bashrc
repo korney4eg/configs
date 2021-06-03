@@ -17,6 +17,11 @@ complete -C '/usr/local/bin/aws_completer' aws
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
+
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f /Users/aliaksei.karneyeu/projects/z/z.sh ] && . /Users/aliaksei.karneyeu/projects/z/z.sh
+shopt -s histappend
+PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
 source ~/configs/colors.bash
 source ~/configs/ps1.bash
 source ~/configs/alias.bash
@@ -33,10 +38,8 @@ if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
 	trap "kill $SSH_AGENT_PID" 0
 fi
 ssh-add
+ssh-add ~/.ssh/my_rsa
 
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
-unset PROMPT_COMMAND
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

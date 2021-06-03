@@ -9,7 +9,7 @@ nnoremap <Leader>g :Git<CR>
 nnoremap <Leader>r :source ~/configs/.vim/init.vim<CR>
 
 " Find current file in NERDTree
-nnoremap <Leader>a :call NerdTreeToggleFind()<CR>
+nnoremap <Leader>f :call NerdTreeToggleFind()<CR>
 "
 " Go imports on local buffer
 nnoremap <Leader>i :! goimports -w %<CR>
