@@ -1,14 +1,4 @@
 filetype plugin indent on
-source ~/configs/.vim/ui.vim
-source ~/configs/.vim/plugin/formatting/formatting.vim
-source ~/configs/.vim/plugin/functions/main.vim
-source ~/configs/.vim/plugin/lsp/autocmd.vim
-source ~/configs/.vim/plugin/mappings/leader.vim
-source ~/configs/.vim/plugin/mappings/lsp.vim
-source ~/configs/.vim/plugin/terminal/hide_terminal.vim
-
-
-
 
 set path=.,,**
 set noswapfile
@@ -28,6 +18,14 @@ let mapleader="\<Space>"
 let maplocalleader="\\"
 imap jj <Esc>
 
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" Airline settings
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1 
+set statusline=%<[%n]\ %f\ %m%r%h%w\ %y\ %{&fileencoding}%=%b\ \ \ %c/%v\ %l/%L\ \ %P\ %a
 "}}
 
 " set runtimepath^=~/configs/.vim/
