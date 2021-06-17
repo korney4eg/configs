@@ -1,6 +1,13 @@
 require'lspconfig'.groovyls.setup{
   cmd = { "java", "-jar", "~/.cache/nvim/lspconfig/groovyls/groovy-language-server/build/libs/groovy-language-server-all.jar" },
   on_attach=require'completion'.on_attach,
+  settings = {
+    groovy = {
+      classpath = { 
+            "/usr/local/Cellar/groovy/3.0.8/libexec/lib/jenkins.war",
+      }
+    },
+  },
   filetypes = { "groovy" }
 }
 
