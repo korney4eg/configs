@@ -4,6 +4,6 @@
 *.swp
 workalias*.bash
 .DS_Store
-./.vim/plugged/*
-.vim/plugged/nerdtree
+# ./.vim/plugged/*
+# .vim/plugged/nerdtree
 .vim/plugged
