@@ -1,0 +1,13 @@
+[push]
+	default = current
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master
+; [apply]
+; 	ignoreWhitespace = true
+
+[include]
+	path = ~/git-personal.conf
+[includeIf "gitdir:~/work/"]
+	path = ~/git-work.conf
