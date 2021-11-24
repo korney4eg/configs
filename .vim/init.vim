@@ -1,27 +1,34 @@
 filetype plugin indent on
 call plug#begin('~/.vim/plugged')
+" Terminal
+Plug 'itmecho/neoterm.nvim'
 " NERDTREE - to be replaced with Telescope
 Plug 'preservim/nerdtree'
 " LSP config
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 " Should stay only one of them
-Plug 'hrsh7th/nvim-compe'
-Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
 
 " Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'nvim-telescope/telescope-symbols.nvim'
+Plug 'nvim-telescope/telescope-github.nvim'
+
 " Tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 " Code format
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
+Plug 'lukas-reineke/format.nvim'
 " Commentary
 Plug 'tpope/vim-commentary'
 " Dev Icons
@@ -30,13 +37,20 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
+" Linter
+Plug 'mfussenegger/nvim-lint'
+
+
 " Different filetypes
 Plug 'google/vim-jsonnet'
 Plug 'pearofducks/ansible-vim'
-Plug 'tpope/vim-markdown'
+Plug 'gabrielelana/vim-markdown'
+Plug 'hashivim/vim-terraform'
+
+" GitHub
+Plug 'skanehira/gh.vim'
 
 call plug#end()
-call glaive#Install()
 
 set path=.,,**
 set noswapfile
@@ -44,6 +58,10 @@ set shiftwidth=2
 set nocompatible
 set autoread
 set splitbelow
+" set spell spelllang=en_us
+" set spellsuggest=fast,20 "Don't show too much suggestion for spell check.
+" set spellfile=~/.vim/spell/en.utf-8.add
+
 " jump to other buffers without saving
 set hidden
 if !has('nvim')
@@ -59,13 +77,11 @@ autocmd BufRead,BufNewFile *.tf setlocal filetype=terraform
 autocmd BufRead,BufNewFile *.tfvars setlocal filetype=terraform
 autocmd BufRead,BufNewFile *.tfstate setlocal filetype=json
 autocmd BufRead,BufNewFile *.tfstate.backup setlocal filetype=json
+" autocmd BufNewFile,BufRead * if search('{{.\+}}', 'nw') | setlocal filetype=gotmpl | endif
 autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType go setlocal nolist
 autocmd FileType make setlocal
-" au BufWinEnter,FileType markdown colorscheme solarized8_flat
 
-
-" set g:syntastic_puppet_checkers = ['puppet-lint']
 
 
 autocmd BufNewFile **/_drafts/*.md 0r ~/configs/.vim/templates/jekyll_draft.md
@@ -100,3 +116,8 @@ set incsearch
 let g:go_fmt_command = "goimports"
 
 lua require('init')
+
+" Settings for NeoVide
+let g:neovide_cursor_animation_length=0
+set guifont=Hack\ Nerd\ Font\ Mono:h15
+
