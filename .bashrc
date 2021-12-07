@@ -45,3 +45,5 @@ ssh-add ~/.ssh/my_rsa
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/usr/local/opt/mysql@5.5/bin:$PATH"
 source <(kubectl completion bash)
+
+alias luamake=/Users/aliaksei.karneyeu/tmp/lua-language-server/3rd/luamake/luamake

@@ -20,4 +20,5 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:~/work/scripts
+export PATH=$PATH:~/configs/bin/
 export ANSIBLE_NOCOWS=1

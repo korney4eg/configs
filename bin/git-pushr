@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+# output='Перечисление объектов: 4, готово.
+# Подсчет объектов: 100% (4/4), готово.
+# При сжатии изменений используется до 12 потоков
+# Сжатие объектов: 100% (3/3), готово.
+# Запись объектов: 100% (3/3), 661 байт | 661.00 КиБ/с, готово.
+# Всего 3 (изменений 1), повторно использовано 0 (изменений 0), повторно использовано пакетов 0
+# remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+# remote:
+# remote: Create a pull request for 'add_todo' on GitHub by visiting:
+# remote:      https://github.com/korney4eg/configs/pull/new/add_todo
+# remote:
+# To github.com:korney4eg/configs.git
+#  * [new branch]      add_todo -> add_todo
+# '
+PR_URL=$(git push 2>&1 | grep 'pull\/new'|sed 's/^.*https/https/'|sed 's/\ *$//')
+
+echo "PR URL = '$PR_URL'"
+
+if [[ "$PR_URL" != "" ]]
+then
+  open "$PR_URL"
+fi
+
