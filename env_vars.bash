@@ -21,4 +21,5 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:~/work/scripts
 export PATH=$PATH:~/configs/bin/
+export PATH=$PATH:~/.cargo/bin/
 export ANSIBLE_NOCOWS=1

@@ -38,7 +38,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Linter
-Plug 'mfussenegger/nvim-lint'
+" Plug 'mfussenegger/nvim-lint'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 
 
 " Different filetypes
