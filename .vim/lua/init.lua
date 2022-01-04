@@ -1,3 +1,2 @@
-require "lsp"
-   require "treesitter"
--- require "linter"
+require("lsp")
+require("treesitter")
