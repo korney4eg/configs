@@ -1,2 +1,2 @@
-require "lsp"
-require "treesitter"
+require("lsp")
+require("treesitter")

@@ -27,8 +27,6 @@ Plug 'nvim-treesitter/playground'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" Code format
-Plug 'lukas-reineke/format.nvim'
 " Commentary
 Plug 'tpope/vim-commentary'
 " Dev Icons
@@ -37,8 +35,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" Linter
-Plug 'mfussenegger/nvim-lint'
+" Linter, formatter
+Plug 'jose-elias-alvarez/null-ls.nvim'
 
 
 " Different filetypes
@@ -101,7 +99,7 @@ endif
 
 " Airline settings
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 0 
+let g:airline#extensions#tabline#buffer_nr_show = 0
 set statusline=%<[%n]\ %f\ %m%r%h%w\ %y\ %{&fileencoding}%=%b\ \ \ %c/%v\ %l/%L\ \ %P\ %a
 "}}
 
@@ -120,4 +118,3 @@ lua require('init')
 " Settings for NeoVide
 let g:neovide_cursor_animation_length=0
 set guifont=Hack\ Nerd\ Font\ Mono:h15
-
