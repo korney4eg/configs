@@ -27,7 +27,7 @@ require'nvim-treesitter.configs'.setup {
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 -- parser_config.markdown = {
 --   install_info = {
---     url = "~/configs/.vim/ts_parsers/tree-sitter-markdown", -- local path or git repo
+--     url = "~/configs/nvim/ts_parsers/tree-sitter-markdown", -- local path or git repo
 --     files = {"src/parser.c"}
 --   },
 --   filetype = "markdown", -- if filetype does not agrees with parser name
@@ -35,7 +35,7 @@ local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 -- }
 parser_config.make = {
   install_info = {
-    url = "~/configs/.vim/ts_parsers/tree-sitter-make", -- local path or git repo
+    url = "~/configs/nvim/ts_parsers/tree-sitter-make", -- local path or git repo
     files = {"src/parser.c"}
   },
   filetype = "make", -- if filetype does not agrees with parser name
@@ -45,7 +45,7 @@ parser_config.make = {
 local parser_config = require'nvim-treesitter.parsers'.get_parser_configs()
 parser_config.gotmpl = {
   install_info = {
-    url = "~/configs/.vim/ts_parsers/tree-sitter-go-template",
+    url = "~/configs/nvim/ts_parsers/tree-sitter-go-template",
     files = {"src/parser.c"}
   },
   filetype = "gotmpl",
@@ -55,7 +55,7 @@ parser_config.gotmpl = {
 local parser_config = require'nvim-treesitter.parsers'.get_parser_configs()
 parser_config.yaml = {
   install_info = {
-    url = "~/configs/.vim/ts_parsers/tree-sitter-yaml",
+    url = "~/configs/nvim/ts_parsers/tree-sitter-yaml",
     files = {"src/parser.c"}
   },
   filetype = "yaml",

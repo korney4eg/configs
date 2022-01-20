@@ -125,8 +125,8 @@
 	path = .vim/pack/bundle/start/plenary.nvim
 	url = https://github.com/nvim-lua/plenary.nvim
 [submodule ".vim/ts_parsers/tree-sitter-make"]
-	path = .vim/ts_parsers/tree-sitter-make
+	path = nvim/ts_parsers/tree-sitter-make
 	url = https://github.com/alemuller/tree-sitter-make
 [submodule ".vim/ts_parsers/tree-sitter-markdown"]
-	path = .vim/ts_parsers/tree-sitter-markdown
+	path = nvim/ts_parsers/tree-sitter-markdown
 	url = https://github.com/ikatyang/tree-sitter-markdown

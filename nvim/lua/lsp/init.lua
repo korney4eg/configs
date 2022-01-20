@@ -18,7 +18,7 @@ cmp.setup({
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
 vim.o.updatetime = 250
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_position_diagnostics({focusable=false})]])
+-- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_position_diagnostics({focusable=false})]])
 
 require("lspconfig").groovyls.setup({
 	cmd = {
@@ -42,6 +42,10 @@ require("lspconfig").bashls.setup({
 })
 require("lspconfig").gopls.setup({
 	capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	on_attach = function(client)
+		client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_range_formatting = false
+	end,
 })
 require("lspconfig").vimls.setup({
 	capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities()),
@@ -68,8 +72,8 @@ nvim_lsp["yamlls"].setup({
 	settings = {
 		yaml = {
 			schemas = {
-				["/Users/aliaksei.karneyeu/configs/.vim/lsp_rules/cloudbuild.json"] = ".ci/cloudbuild*.yaml", -- cloudbuild configuration
-				["/Users/aliaksei.karneyeu/configs/.vim/lsp_rules/hadolint.json"] = ".hadolint.yaml",
+				["/Users/aliaksei.karneyeu/configs/nvim/lsp_rules/cloudbuild.json"] = ".ci/cloudbuild*.yaml", -- cloudbuild configuration
+				["/Users/aliaksei.karneyeu/configs/nvim/lsp_rules/hadolint.json"] = ".hadolint.yaml",
 			},
 		},
 	},

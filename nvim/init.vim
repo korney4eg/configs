@@ -1,5 +1,5 @@
 filetype plugin indent on
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 " Terminal
 Plug 'itmecho/neoterm.nvim'
 " NERDTREE - to be replaced with Telescope
@@ -53,12 +53,11 @@ call plug#end()
 set path=.,,**
 set noswapfile
 set shiftwidth=2
-set nocompatible
 set autoread
 set splitbelow
 " set spell spelllang=en_us
 " set spellsuggest=fast,20 "Don't show too much suggestion for spell check.
-" set spellfile=~/.vim/spell/en.utf-8.add
+" set spellfile=~/configs/nvim/spell/en.utf-8.add
 
 " jump to other buffers without saving
 set hidden
@@ -82,8 +81,8 @@ autocmd FileType make setlocal
 
 
 
-autocmd BufNewFile **/_drafts/*.md 0r ~/configs/.vim/templates/jekyll_draft.md
-autocmd BufNewFile **/content/*.md 0r ~/configs/.vim/templates/gohugo_draft.md
+autocmd BufNewFile **/_drafts/*.md 0r ~/configs/nvim/templates/jekyll_draft.md
+autocmd BufNewFile **/content/*.md 0r ~/configs/nvim/templates/gohugo_draft.md
 
 
 au FocusGained,BufEnter * :silent! !
@@ -103,7 +102,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 0
 set statusline=%<[%n]\ %f\ %m%r%h%w\ %y\ %{&fileencoding}%=%b\ \ \ %c/%v\ %l/%L\ \ %P\ %a
 "}}
 
-" set runtimepath^=~/configs/.vim/
+" set runtimepath^=~/configs/nvim/
 let $RTP=split(&runtimepath, ',')[0]
 
 let g:hcl_fmt_autosave = 1

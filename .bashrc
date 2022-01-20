@@ -47,3 +47,8 @@ export PATH="/usr/local/opt/mysql@5.5/bin:$PATH"
 source <(kubectl completion bash)
 
 alias luamake=/Users/aliaksei.karneyeu/tmp/lua-language-server/3rd/luamake/luamake
+
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION
