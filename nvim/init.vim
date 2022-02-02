@@ -41,6 +41,8 @@ Plug 'airblade/vim-gitgutter'
 " Linter, formatter
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
+" Tmux
+Plug 'christoomey/vim-tmux-navigator'
 
 " Different filetypes
 Plug 'google/vim-jsonnet'
