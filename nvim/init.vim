@@ -12,6 +12,9 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 
+" Debug tool
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 " Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -50,7 +53,7 @@ Plug 'skanehira/gh.vim'
 
 call plug#end()
 
-set path=.,,**
+" set pah=.,,**
 set noswapfile
 set shiftwidth=2
 set autoread
@@ -77,6 +80,7 @@ autocmd BufRead,BufNewFile *.tfstate.backup setlocal filetype=json
 " autocmd BufNewFile,BufRead * if search('{{.\+}}', 'nw') | setlocal filetype=gotmpl | endif
 autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType go setlocal nolist
+autocmd FileType lua setlocal nolist
 autocmd FileType make setlocal
 
 
