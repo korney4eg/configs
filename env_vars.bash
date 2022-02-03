@@ -1,5 +1,6 @@
 
 export CLICOLOR=1
+export TERM=screen-256color
 export LSCOLORS=ExFxCxDxBxegedabagaced
 # less color variables
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -14,7 +15,6 @@ export EDITOR=nvim
 export PATH="$PATH":~/bin/
 export PATH="$PATH":~/.chefdk/gem/ruby/2.4.0/bin
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export TERM='xterm-color'
 export GOPATH="$HOME"/projects/go-workspace # don't forget to change your path correctly!
 export GOROOT=/usr/local/opt/go/libexec
 export PATH="$PATH:$GOPATH"/bin
