@@ -61,8 +61,8 @@ set shiftwidth=2
 set autoread
 set splitbelow
 " set spell spelllang=en_us
-" set spellsuggest=fast,20 "Don't show too much suggestion for spell check.
-" set spellfile=~/configs/nvim/spell/en.utf-8.add
+set spellsuggest=fast,20 "Don't show too much suggestion for spell check.
+set spellfile=~/configs/nvim/spell/words.utf-8.add
 
 " jump to other buffers without saving
 set hidden
