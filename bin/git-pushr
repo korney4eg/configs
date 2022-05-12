@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -eo pipefail
 
 # output='Перечисление объектов: 4, готово.
 # Подсчет объектов: 100% (4/4), готово.
@@ -17,10 +17,9 @@ set -e
 # '
 PR_URL=$(git push 2>&1 | grep 'pull\/new'|sed 's/^.*https/https/'|sed 's/\ *$//')
 
-echo "PR URL = '$PR_URL'"
-
 if [[ "$PR_URL" != "" ]]
 then
   open "$PR_URL"
+else
+  echo 'Will not create new PR'
 fi
-
