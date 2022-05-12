@@ -15,11 +15,12 @@ set -eo pipefail
 # To github.com:korney4eg/configs.git
 #  * [new branch]      add_todo -> add_todo
 # '
-PR_URL=$(git push 2>&1 | grep 'pull\/new'|sed 's/^.*https/https/'|sed 's/\ *$//')
+PR_URL=$(git push 2>&1 | grep 'pull\/new'|sed 's/^.*https/https/'|sed 's/\s*$//')
 
 if [[ "$PR_URL" != "" ]]
 then
+  echo 'Creating PR'
   open "$PR_URL"
 else
-  echo 'Will not create new PR'
+  echo 'PR already exists'
 fi
