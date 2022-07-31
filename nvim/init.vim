@@ -7,10 +7,13 @@ Plug 'preservim/nerdtree'
 " LSP config
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
+" Plug 'j-hui/fidget.nvim'
 " Should stay only one of them
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'f3fora/cmp-spell'
+Plug 'hrsh7th/cmp-path'
 
 " Debug tool
 Plug 'mfussenegger/nvim-dap'
@@ -22,6 +25,8 @@ Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'nvim-telescope/telescope-github.nvim'
+Plug 'nvim-telescope/telescope-project.nvim'
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 
 " Tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -29,6 +34,13 @@ Plug 'nvim-treesitter/playground'
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" Themes
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+
+" Notifications
+Plug 'rcarriga/nvim-notify'
+" Plug 'j-hui/fidget.nvim'
 
 " Commentary
 Plug 'tpope/vim-commentary'
@@ -47,11 +59,19 @@ Plug 'christoomey/vim-tmux-navigator'
 " Different filetypes
 Plug 'google/vim-jsonnet'
 Plug 'pearofducks/ansible-vim'
-Plug 'gabrielelana/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
+Plug 'preservim/vim-markdown'
 Plug 'hashivim/vim-terraform'
 
 " GitHub
 Plug 'skanehira/gh.vim'
+
+" Working with sessions
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+
+" Table plugin
+Plug 'dhruvasagar/vim-table-mode'
 
 call plug#end()
 
@@ -60,7 +80,6 @@ set noswapfile
 set shiftwidth=2
 set autoread
 set splitbelow
-" set spell spelllang=en_us
 set spellsuggest=fast,20 "Don't show too much suggestion for spell check.
 set spellfile=~/configs/nvim/spell/words.utf-8.add
 
@@ -106,6 +125,11 @@ augroup jump_to_last_used_line
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 augroup END
 
+augroup spelling
+  autocmd!
+  autocmd BufWritePost **/words.utf-8.add <cmd>mkspell! ~/configs/nvim/spell/words.utf-8.add
+augroup END
+
 " Mappings {{{
 let mapleader="\<Space>"
 let maplocalleader="\\"
@@ -113,8 +137,9 @@ imap jj <Esc>
 
 
 " Airline settings
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 0
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_nr_show = 0
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
 set statusline=%<[%n]\ %f\ %m%r%h%w\ %y\ %{&fileencoding}%=%b\ \ \ %c/%v\ %l/%L\ \ %P\ %a
 "}}
 
@@ -126,8 +151,12 @@ let g:terraform_fmt_on_save=1
 
 
 set incsearch
+set smartcase
+set ignorecase
 let g:go_fmt_command = 'goimports'
 
+set runtimepath+=$HOME/configs/nvim/experiments/plugins/telescope-sessions.nvim/
+set runtimepath+=$HOME/configs/nvim/experiments/plugins/telescope-gh-checks.nvim/
 lua require('init')
 
 " Settings for NeoVide
