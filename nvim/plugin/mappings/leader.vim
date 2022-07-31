@@ -59,7 +59,7 @@ nmap <leader>l <Plug>AirlineSelectNextTab
 " Open git window
 nnoremap <Leader>gs :Git<CR>
 " git push
-nnoremap <Leader>gp :silent lua require'gh-status'.push()<CR>:q<CR>
+nnoremap <Leader>gp :silent lua require'gh-status'.pushr()<CR>
 nnoremap <Leader>gc :silent Telescope gh_checks check_runs<CR>
 " nnoremap <Leader>gp :silent Git pushr<CR>
 

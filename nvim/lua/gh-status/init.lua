@@ -39,7 +39,11 @@ M.pushr = function()
   else
     vim.notify("PR exists", "info")
   end
+  if vim.bo.filetype == 'fugitive' then
+    vim.api.nvim_win_close(0, true)
+  end
 end
+
 
 M.push = function()
   -- notify_output({ "git", "pushr" })
