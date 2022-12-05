@@ -1,1 +1,4 @@
-vim.opt.laststatus = 3
+-- setup colorscheme
+-- require('ofirkai').setup {}
+
+-- require('gitsigns').setup()

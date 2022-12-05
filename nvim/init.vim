@@ -14,6 +14,10 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'f3fora/cmp-spell'
 Plug 'hrsh7th/cmp-path'
+Plug 'saadparwaiz1/cmp_luasnip'
+
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 " Debug tool
 Plug 'mfussenegger/nvim-dap'
@@ -37,6 +41,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Themes
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
+Plug 'ofirgall/ofirkai.nvim'
+Plug 'tanvirtin/monokai.nvim'
 
 " Notifications
 Plug 'rcarriga/nvim-notify'
@@ -48,7 +54,9 @@ Plug 'tpope/vim-commentary'
 Plug 'ryanoasis/vim-devicons'
 " Working with Git
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 
 " Linter, formatter
 Plug 'jose-elias-alvarez/null-ls.nvim'
@@ -73,28 +81,28 @@ Plug 'xolox/vim-session'
 " Table plugin
 Plug 'dhruvasagar/vim-table-mode'
 
+" convert json to go
+Plug 'meain/vim-jsontogo'
+
 call plug#end()
 
-" set pah=.,,**
-set noswapfile
-set shiftwidth=2
-set autoread
-set splitbelow
+" set shiftwidth=2
+" set autoread
+" set splitbelow
 set spellsuggest=fast,20 "Don't show too much suggestion for spell check.
 set spellfile=~/configs/nvim/spell/words.utf-8.add
 
 " jump to other buffers without saving
-set hidden
-if !has('nvim')
-  set ttymouse=xterm2
-endif
-set mouse=a
-set foldlevel=100
+" set hidden
+" if !has('nvim')
+"   set ttymouse=xterm2
+" endif
+" set mouse=a
+" set foldlevel=100
 
 augroup filetypes
   autocmd!
   autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
-  autocmd FileType * set tabstop=2|set shiftwidth=2|set expandtab
   autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
   autocmd BufRead,BufNewFile *.pp set ft=puppet
   autocmd BufRead,BufNewFile *.tf setlocal filetype=terraform
@@ -102,10 +110,10 @@ augroup filetypes
   autocmd BufRead,BufNewFile *.tfstate setlocal filetype=json
   autocmd BufRead,BufNewFile *.tfstate.backup setlocal filetype=json
   " autocmd BufNewFile,BufRead * if search('{{.\+}}', 'nw') | setlocal filetype=gotmpl | endif
-  autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
   autocmd FileType go setlocal nolist
   autocmd FileType lua setlocal nolist
-  autocmd FileType make setlocal
+  autocmd FileType make setlocal nolist
+  autocmd FileType jsonnet g:jsonnet_fmt_options="-n 0"
 augroup END
 
 augroup blog_templates
@@ -146,17 +154,18 @@ set statusline=%<[%n]\ %f\ %m%r%h%w\ %y\ %{&fileencoding}%=%b\ \ \ %c/%v\ %l/%L\
 " set runtimepath^=~/configs/nvim/
 let $RTP=split(&runtimepath, ',')[0]
 
-let g:hcl_fmt_autosave = 1
-let g:terraform_fmt_on_save=1
+" let g:hcl_fmt_autosave = 1
+" let g:terraform_fmt_on_save=1
 
 
-set incsearch
-set smartcase
-set ignorecase
-let g:go_fmt_command = 'goimports'
+" set incsearch
+" set smartcase
+" set ignorecase
+" let g:go_fmt_command = 'goimports'
 
 set runtimepath+=$HOME/configs/nvim/experiments/plugins/telescope-sessions.nvim/
 set runtimepath+=$HOME/configs/nvim/experiments/plugins/telescope-gh-checks.nvim/
+colorscheme monokai
 lua require('init')
 
 " Settings for NeoVide

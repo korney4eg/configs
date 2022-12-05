@@ -6,7 +6,8 @@ let g:completion_enable_auto_popup = 0
 let g:completion_enable_auto_hover = 0
 let g:completion_enable_auto_signature = 0
 let g:completion_sorting = "none"
-set completeopt=menuone,menuone,noinsert,noselect
+" set completeopt=menuone,menuone
+" set completeopt=menuone,menuone,noinsert,noselect
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
