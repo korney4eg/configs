@@ -1,4 +1,4 @@
-
+export BASH_SILENCE_DEPRECATION_WARNING=1
 export CLICOLOR=1
 export TERM=screen-256color
 export LSCOLORS=ExFxCxDxBxegedabagaced
@@ -24,3 +24,4 @@ export PATH="$PATH":~/configs/bin/
 export PATH="$PATH":~/.cargo/bin/
 export PATH="$PATH":~/projects/lua-language-server/bin/macOS/
 export ANSIBLE_NOCOWS=1
+export GOOGLE_APPLICATION_CREDENTIALS="~/.config/gcloud/application_default_credentials.json"
