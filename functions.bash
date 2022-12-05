@@ -18,3 +18,7 @@ function cover () {
         && go tool cover -func="$t" \
         && unlink "$t"
 }
+
+function kgp () {
+k get pod  "$1" -o json|jless
+}
