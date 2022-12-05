@@ -29,8 +29,6 @@ source ~/configs/git-prompt.sh
 source ~/configs/functions.bash
 source ~/configs/env_vars.bash
 
-source /Users/akarneyeu/.rvm/scripts/rvm
-
 SSHAGENT=/usr/bin/ssh-agent
 SSHAGENTARGS="-s"
 if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
@@ -47,6 +45,10 @@ export PATH="/usr/local/opt/mysql@5.5/bin:$PATH"
 source <(kubectl completion bash)
 
 alias luamake=/Users/aliaksei.karneyeu/tmp/lua-language-server/3rd/luamake/luamake
+
+
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 
 # BEGIN_KITTY_SHELL_INTEGRATION
