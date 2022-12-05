@@ -1,24 +1,11 @@
 # get OS name
 if [ "$(uname)" = "Darwin" ]
-then
-  OS="OSX"
+	set OS "OSX"
 else
-  OS=$(awk '/^ID=/' /etc/*-release | sed 's/^.*ID=//' | tr '[:upper:]' '[:lower:]')
-fi
+  set OS $(awk '/^ID=/' /etc/*-release | sed 's/^.*ID=//' | tr '[:upper:]' '[:lower:]')
+end
 
-SUDO_CMD="sudo"
-
-if [ "$OS" = "OSX" ]
-then
-  # No need root permissions to install packages with sudo
-  SUDO_CMD=""
-  PACKMAN="brew"
-elif [ "$OS" = "debian" ] || [ "$OS" = "ubuntu" ]
-then
-	PACKMAN='aptitude'
-else
-	PACKMAN='yum'
-fi
+set SUDO_CMD "sudo"
 
 alias deploy_vervedea='ansible-playbook provision.yaml -e variables.yaml -i hosts.yaml'
 #=========================  A L I A S E S ============================
@@ -48,14 +35,20 @@ alias df='df -h'
 
 # free RAM
 alias free="free -m"
-function g() {
-  if [[ $# > 0 ]]; then
-    git $@
-  else
-    git status
-  fi
-}
-complete -F _git g
+function rmi --wraps rm --description 'alias rmi=rm -i'
+    rm -i $argv
+end
+# function g
+#   if [[ $# > 0 ]]; then
+#     git $@
+#   else
+#     git status
+#   fi
+# end
+
+function g --wraps git
+    git $argv
+end
 #git aliases
 alias gs='git status '
 alias gu='git pull upstream '
@@ -68,16 +61,11 @@ alias gd='git diff '
 alias gco='git checkout '
 
 #ls aliases
-alias ls='ls --color=always'
-alias ll='ls -lFG'
-alias la='ls -A'
-alias l='ls -CF'
-
-#alias grep='grep —color=always' 
-alias reboot='sudo shutdown -r now '
-alias halt='sudo shutdown -h now'
-alias hibernate='sudo pm-hibernate'
-alias suspend='sudo pm-suspend'
+set EXA_COLORS "ur=11:uw=11:ux:11:lc=11:sn=11:uu=11:gu=11:di=34"
+export EXA_COLORS
+alias ls=' exa --long -all --icons --no-user --group-directories-first  --time-style  long-iso'
+alias ll='exa --long --icons --no-user --group-directories-first  --time-style  long-iso'
+alias cat='bat'
 
 #other aliases
 alias rm='rm -i'
@@ -92,9 +80,11 @@ alias tmux='tmux -2'
 alias vimr='vimr --nvim '
 #-------------------------------------------------------------
 # K8s
-alias k="grc kubectl"
 alias kdp="grc kubectl describe pod "
-complete -F __start_kubectl k
+# complete  -c kubectl k
+function k --wraps kubectl
+    grc kubectl $argv
+end
 alias kx=kubectx
 
 
