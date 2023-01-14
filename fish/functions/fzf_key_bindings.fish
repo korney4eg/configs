@@ -1,0 +1,1 @@
+/Users/aliaksei.karneyeu/.local/share/nvim/site/pack/packer/opt/fzf/shell/key-bindings.fish

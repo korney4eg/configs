@@ -90,4 +90,3 @@ alias kx=kubectx
 
 
 alias deploy_jekyll="docker run --name newblog -d --rm --volume=\"$PWD:/srv/jekyll\" -p 4000:4000 -it jekyll/jekyll jekyll serve --watch --drafts"
-alias spin="~/.spin/spin"

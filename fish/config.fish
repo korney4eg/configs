@@ -1,4 +1,6 @@
 set TERM xterm
+set DOCKER_DEFAULT_PLATFORM linux/amd64
+export DOCKER_DEFAULT_PLATFORM
 source ~/configs/alias.fish
 #set -g __fish_git_prompt_show_informative_status 1
 #set -g __fish_git_prompt_hide_untrackedfiles 1

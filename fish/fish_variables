@@ -29,3 +29,4 @@ SETUVAR fish_pager_color_description:49483E
 SETUVAR fish_pager_color_prefix:F8F8F2
 SETUVAR fish_pager_color_progress:F8F8F2
 SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_user_paths:/opt/homebrew/opt/curl/bin\x1e/opt/homebrew/bin\x1e/opt/homebrew/opt/coreutils/libexec/gnubin\x1e/Users/aliaksei\x2ekarneyeu/go/bin\x1e/Users/aliaksei\x2ekarneyeu/\x2elocal/share/nvim/site/pack/packer/opt/fzf/bin
