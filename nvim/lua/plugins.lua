@@ -60,6 +60,9 @@ require('packer').startup(function(use)
     end }
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+  use 'tjdevries/colorbuddy.nvim'
+  use 'tjdevries/gruvbuddy.vim'
+  
   use {
     'https://gitlab.com/__tpb/monokai-pro.nvim',
     as = 'monokai-pro.nvim'
