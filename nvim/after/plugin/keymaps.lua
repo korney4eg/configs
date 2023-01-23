@@ -48,18 +48,49 @@ vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, { desc
 -- === Buffers
 vim.keymap.set('n', '<leader>b', require('telescope.builtin').buffers, { desc = 'Find existing [b]uffers' })
 
+-- ==== Dotfiles operations
+vim.keymap.set('n', '<leader>cf', function()
+  require('telescope.builtin').find_files({ cwd = "~/configs/" })
+end,
+  { desc = 'Search in [c]onfig [f]iles' })
+vim.keymap.set('n', '<leader>csw', function()
+  require('telescope.builtin').grep_string({ file_ignore_patterns = { "**/nvim/lsp-rules/*" }, cwd = "~/configs/" })
+end, { desc = '[c]onfigs [s]earching for [w]ord under cursor' })
+vim.keymap.set('n', '<leader>cs', function()
+  require('telescope.builtin').grep_string({ file_ignore_patterns = { "nvim/lsp-rules" }, cwd = "~/configs/" })
+end, { desc = '[c]onfigis [s]earching for string' })
+
+-- ===
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>s', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>sw', function()
+  require('telescope.builtin').grep_string({ hidden = true, search = vim.fn.expand("<cword>") })
+end,
+  { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>s', function()
+  require('telescope.builtin').live_grep({ hidden = true })
+end,
+  { desc = '[S]earch by [G]rep' })
 
 -- Debug
-vim.keymap.set('n', '<leader>db', require'dap'.toggle_breakpoint, { desc = 'Toggle [d]ebug [b]reakpoint' })
+vim.keymap.set('n', '<leader>db', require 'dap'.toggle_breakpoint, { desc = 'Toggle [d]ebug [b]reakpoint' })
 vim.keymap.set('n', "<leader>dc", function()
   require("dap").set_breakpoint(vim.fn.input "[DAP] Condition > ")
 end, { desc = 'Set [d]ebug [c]onditional breakpoint' })
-vim.keymap.set('n', '<leader>ds', require'dap'.continue, { desc = '[D]ebug [S]tart' })
-vim.keymap.set('n', '<leader>dq', require'dap'.close, { desc = '[D]ebug [Q]uit' })
-vim.keymap.set('n', '<leader>dt', require'dapui'.toggle, { desc = '[D]ebug UI [T]oggle' })
+vim.keymap.set('n', '<leader>ds', require 'dap'.continue, { desc = '[D]ebug [S]tart' })
+vim.keymap.set('n', '<leader>dq', require 'dap'.close, { desc = '[D]ebug [Q]uit' })
+vim.keymap.set('n', '<leader>dt', require 'dapui'.toggle, { desc = '[D]ebug UI [T]oggle' })
+
+local map = function(lhs, rhs, desc)
+  if desc then
+    desc = "[DAP] " .. desc
+  end
+
+  vim.keymap.set("n", lhs, rhs, { silent = true, desc = desc })
+end
+map("<F1>", require("dap").step_back, "step_back")
+map("<F2>", require("dap").step_into, "step_into")
+map("<F3>", require("dap").step_over, "step_over")
+map("<F4>", require("dap").step_out, "step_out")
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
@@ -68,33 +99,31 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- LSP
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = 'LSP: ' .. desc
-    end
-
-    vim.keymap.set('n', keys, func, { buffer = 0, desc = desc })
+local nmap = function(keys, func, desc)
+  if desc then
+    desc = 'LSP: ' .. desc
   end
 
-  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  vim.keymap.set('n', keys, func, { buffer = 0, desc = desc })
+end
 
-  nmap('C-]', vim.lsp.buf.definition, '[G]oto [D]efinition')
-  nmap('C-[', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
-  -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+nmap('C-]', vim.lsp.buf.definition, '[G]oto [D]efinition')
+nmap('C-[', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
-  -- Lesser used LSP functionality
-  nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+-- See `:help K` for why this keymap
+nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+
+-- Lesser used LSP functionality
+nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 -- TODO: checkout out workspaces
 
 
-  -- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-  -- nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-  -- nmap('<leader>wl', function()
-  --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  -- end, '[W]orkspace [L]ist Folders')
-
-
+-- nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
+-- nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
+-- nmap('<leader>wl', function()
+--   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+-- end, '[W]orkspace [L]ist Folders')
