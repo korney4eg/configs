@@ -40,6 +40,8 @@ require('packer').startup(function(use)
     after = 'nvim-treesitter',
   }
 
+  use {"towolf/vim-helm"}
+
   -- Git related plugins
   use 'tpope/vim-fugitive'
 
