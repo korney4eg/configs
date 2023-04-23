@@ -24,25 +24,6 @@ require('packer').startup(function(use)
       require('nvim-lightbulb').setup({ autocmd = { enabled = true } })
     end
   }
-  -- copilot
-  use {
-  "zbirenbaum/copilot-cmp",
-  after = { "copilot.lua" },
-  config = function ()
-    require("copilot_cmp").setup()
-  end
-}
-  use {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      })
-    end,
-  }
 
 
   -- code actions ??
@@ -53,8 +34,42 @@ require('packer').startup(function(use)
 
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip',   "zbirenbaum/copilot-cmp" },
+    -- after = {'copilot_cmp'},
+    config = function ()
+      require('config.cmp')
+    end,
+    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip',
+      "onsails/lspkind-nvim" },
 
+  }
+  -- copilot
+  use {
+    "zbirenbaum/copilot.lua",
+    cmp = "Copilot",
+    after = "nvim-lspconfig",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = {
+          enabled = false,
+          layout = {
+            position = "bottom",
+            size = 0.4
+          }
+        },
+      })
+    end,
+  }
+
+  use {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua", "nvim-cmp" },
+    config = function()
+      require("copilot_cmp").setup({
+        clear_after_cursor = true,
+        completion_fn = 'getPanelCompletions'
+      })
+    end
   }
 
   use { -- Highlight, edit, and navigate code
@@ -109,6 +124,7 @@ require('packer').startup(function(use)
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'tjdevries/colorbuddy.nvim'
   -- use 'tjdevries/gruvbuddy.vim'
+  use 'tjdevries/gruvbuddy.nvim'
 
   use {
     'https://gitlab.com/__tpb/monokai-pro.nvim',
