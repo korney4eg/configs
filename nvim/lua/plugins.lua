@@ -9,7 +9,7 @@ end
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
-
+  use 'github/copilot.vim'
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
@@ -18,10 +18,42 @@ require('packer').startup(function(use)
       'williamboman/mason-lspconfig.nvim',
     },
   }
+  use {
+    'kosayoda/nvim-lightbulb',
+    config = function()
+      require('nvim-lightbulb').setup({ autocmd = { enabled = true } })
+    end
+  }
+  -- copilot
+  use {
+  "zbirenbaum/copilot-cmp",
+  after = { "copilot.lua" },
+  config = function ()
+    require("copilot_cmp").setup()
+  end
+}
+  use {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  }
+
+
+  -- code actions ??
+  use {
+    'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
+  }
 
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip',   "zbirenbaum/copilot-cmp" },
 
   }
 
@@ -41,6 +73,7 @@ require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   }
+  use 'farmergreg/vim-lastplace'
 
   use({
     "kylechui/nvim-surround",
@@ -112,6 +145,7 @@ require('packer').startup(function(use)
     config = function() require('Comment').setup() end } -- "gc" to comment visual regions/lines
 
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  use { 'RRethy/vim-illuminate' }
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim',
