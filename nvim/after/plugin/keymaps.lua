@@ -127,3 +127,8 @@ nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 -- nmap('<leader>wl', function()
 --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 -- end, '[W]orkspace [L]ist Folders')
+
+
+nmap('<leader>g', ':Neogit<cr>','open [g]it menu')
+
+vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>lua _float_term_toggle()<CR>", {noremap = true, silent = true})

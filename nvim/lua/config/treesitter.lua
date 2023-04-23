@@ -2,62 +2,58 @@
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help','jsonnet' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'yaml', 'python', 'rust', 'typescript', 'help', 'jsonnet', 'terraform' },
 
   highlight = { enable = true },
   indent = { enable = true },
   incremental_selection = {
     enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<c-backspace>',
-    },
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
+    disable = function(lang, buf)
+      local max_filesize = 100 * 1024 -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return true
+      end
+    end,
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
     },
   },
 }
 
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.make = {
+  install_info = {
+    url = "~/configs/nvim/ts_parsers/tree-sitter-make", -- local path or git repo
+    files = { "src/parser.c" }
+  },
+  filetype = "make", -- if filetype does not agrees with parser name
+  -- used_by = {"bar", "baz"} -- additional filetypes that use this parser
+}
+parser_config.gotmpl = {
+  install_info = {
+    url = "https://github.com/ngalaiko/tree-sitter-go-template",
+    files = { "src/parser.c" }
+  },
+  filetype = "gotmpl",
+  used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "yaml", "helm" }
+}
+-- parser_config.yaml = {
+--   install_info = {
+--     url = "~/configs/nvim/ts_parsers/tree-sitter-yaml",
+--     files = {"src/parser.c"}
+--   },
+--   filetype = "yaml",
+--   used_by = {"yaml"}
+-- }

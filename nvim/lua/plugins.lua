@@ -35,15 +35,27 @@ require('packer').startup(function(use)
     end
   }
 
+  use { 'nvim-treesitter/playground' }
+
   use { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   }
 
-  use {"towolf/vim-helm"}
+  use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  })
 
   -- Git related plugins
   use 'tpope/vim-fugitive'
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   use 'tpope/vim-rhubarb'
   use { 'lewis6991/gitsigns.nvim',
@@ -57,14 +69,14 @@ require('packer').startup(function(use)
           changedelete = { text = '~' },
         },
       }
-
-
-    end }
+      require("scrollbar.handlers.gitsigns").setup()
+    end
+  }
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'tjdevries/colorbuddy.nvim'
-  use 'tjdevries/gruvbuddy.vim'
-  
+  -- use 'tjdevries/gruvbuddy.vim'
+
   use {
     'https://gitlab.com/__tpb/monokai-pro.nvim',
     as = 'monokai-pro.nvim'
@@ -72,9 +84,21 @@ require('packer').startup(function(use)
 
   use { 'nvim-lualine/lualine.nvim',
     config = function()
-      require 'config.lualine'.setup()
+      require('lualine').setup()
     end
   } -- Fancier statusline
+  use {
+    'linrongbin16/lsp-progress.nvim',
+    event = { 'VimEnter' },
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('lsp-progress').setup()
+    end
+  }
+
+  use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup()
+  end }
 
   use { 'lukas-reineke/indent-blankline.nvim',
     config = function()
@@ -115,6 +139,15 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
+
+  use { "petertriho/nvim-scrollbar",
+    config = function()
+      require("scrollbar").setup({
+        show = true,
+      })
+    end
+  }
 
 
   -- Debug adapter protocol
@@ -128,6 +161,7 @@ require('packer').startup(function(use)
   use { "mfussenegger/nvim-dap-python" }
 
   use 'meain/vim-jsontogo'
+  use { 'stevearc/dressing.nvim' }
 
   -- Add custom plugins to packer from /nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
