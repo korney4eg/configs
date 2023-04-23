@@ -2,6 +2,8 @@
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
+local symbols = require("plugins.completion_plugins.cmp_configs.symbols")
+
 cmp.setup {
   snippet = {
     expand = function(args)
