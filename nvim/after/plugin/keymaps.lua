@@ -130,5 +130,6 @@ nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
 
 nmap('<leader>g', ':Neogit<cr>','open [g]it menu')
+nmap('<leader>gs', ':Neogit<cr>','open [g]it menu')
 
 vim.api.nvim_set_keymap("n", "<leader>t", "<cmd>lua _float_term_toggle()<CR>", {noremap = true, silent = true})
