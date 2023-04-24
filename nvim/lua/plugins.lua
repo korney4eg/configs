@@ -122,6 +122,7 @@ require('packer').startup(function(use)
   }
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+  use 'JoosepAlviste/palenightfall.nvim'
   use 'tjdevries/colorbuddy.nvim'
   -- use 'tjdevries/gruvbuddy.vim'
   use 'tjdevries/gruvbuddy.nvim'

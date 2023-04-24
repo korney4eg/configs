@@ -29,7 +29,7 @@ opt.wildignorecase = true
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 -- Set colorscheme
-vim.cmd [[colorscheme monokaipro]]
+vim.cmd [[colorscheme palenightfall]]
 
 
 
