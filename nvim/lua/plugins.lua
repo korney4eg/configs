@@ -9,7 +9,6 @@ end
 require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
-  use 'github/copilot.vim'
   use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
@@ -35,9 +34,6 @@ require('packer').startup(function(use)
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
     -- after = {'copilot_cmp'},
-    config = function ()
-      require('config.cmp')
-    end,
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip',
       "onsails/lspkind-nvim" },
 
