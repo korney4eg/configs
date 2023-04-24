@@ -22,6 +22,7 @@ module.exports = {
         "https://openx.okta.com/*", // okta
         "https://slack.com/*", // everything from slack goes to work browser
         "https://github.com/openx/*", // match google.com urls
+        "https://github.com/search*", // match google.com urls
         "https://openxtechinc.atlassian.net/*",
         "https://id.atlassian.com/*",
         "https://app.terraform.io/app/openx/*",
