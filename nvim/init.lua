@@ -1,5 +1,4 @@
 require'plugins'
 require 'config.lsp'
-require 'config.cmp'
 require 'config.dap'
 require 'config.treesitter'
