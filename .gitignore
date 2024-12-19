@@ -6,3 +6,5 @@ workalias*.bash
 .DS_Store
 .vim/plugged
 .vim/.ci
+k9s/clusters/*
+k9s/k9s.log
