@@ -1,0 +1,33 @@
+[user]
+	name = Aliaksei Karneyeu
+	email = korneevayu@gmail.com
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = false
+[core]
+    pager = delta
+    autocrlf = input
+    sshCommand = "ssh -i ~/.ssh/pers"
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+[includeIf "hasconfig:remote.*.url:git@github.com:openx/**"]
+    path = ~/work/.gitconfig
+[url "git@github.com:openx/"]
+	insteadOf = https://github.com/openx/
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true

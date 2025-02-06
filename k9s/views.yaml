@@ -1,0 +1,18 @@
+views:
+  v1/pods:
+    columns:
+      - NAME
+      - READY
+      - STATUS
+      - RESTARTS
+      - "%CPU/L"
+      - "%MEM/L"
+      - AGE
+      - NODE
+  # v1/services:
+  #   columns:
+  #     - AGE
+  #     - NAMESPACE
+  #     - NAME
+  #     - TYPE
+  #     - CLUSTER-IP

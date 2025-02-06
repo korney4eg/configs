@@ -1,0 +1,1 @@
+bind \cf "tmux-sessionizer"

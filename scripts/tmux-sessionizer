@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# vim: set ft=bash
+#
+tmp_file=$(mktemp /tmp/tmux-sessionizer.XXXXXX)
+
+find ~/projects -mindepth 1 -maxdepth 1 -type d >> "$tmp_file"
+# just add configs to the list
+find ~/configs -mindepth 0 -maxdepth 0 -type d >> "$tmp_file"
+find ~/work/apps -mindepth 1 -maxdepth 2 -type d >> "$tmp_file"
+find ~/work/terraform -mindepth 1 -maxdepth 1 -type d >> "$tmp_file"
+# add currently opened sessions that are not in directories
+tmux list-sessions| sed 's/:.*$//' >> "$tmp_file"
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(fzf < "$tmp_file")
+fi
+rm -f "$tmp_file"
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux -2 new-session -s "$selected_name" -c "$selected"
+    exit 0
+fi
+
+if ! tmux -2 has-session -t="$selected_name" 2> /dev/null; then
+    tmux -2 new-session -ds "$selected_name" -c "$selected"
+fi
+
+if [[ -z $TMUX ]]; then
+    tmux -2 attach -t "$selected_name"
+else
+    tmux -2 switch-client -t "$selected_name"
+fi
