@@ -61,11 +61,11 @@ alias gd='git diff '
 alias gco='git checkout '
 
 #ls aliases
-set EXA_COLORS "ur=11:uw=11:ux:11:lc=11:sn=11:uu=11:gu=11:di=34"
-export EXA_COLORS
-alias ls=' exa --long -all --icons --no-user --group-directories-first  --time-style  long-iso'
-alias ll='exa --long --icons --no-user --group-directories-first  --time-style  long-iso'
-alias cat='bat'
+# set EXA_COLORS "ur=11:uw=11:ux:11:lc=11:sn=11:uu=11:gu=11:di=34"
+# export EXA_COLORS
+alias ls='/bin/ls --color=auto'
+alias ll='/bin/ls -l --color=auto'
+# alias cat='bat'
 
 #other aliases
 alias rm='rm -i'
@@ -89,4 +89,4 @@ alias kx=kubectx
 
 
 
-alias deploy_jekyll="docker run --name newblog -d --rm --volume=\"$PWD:/srv/jekyll\" -p 4000:4000 -it jekyll/jekyll jekyll serve --watch --drafts"
+alias deploy_jekyll="docker run --name newblog -d --rm --volume=\"$HOME/projects/korney4eg.github.io:/srv/jekyll\" -p 4000:4000 -it jekyll/jekyll:4 jekyll serve --watch --drafts"
