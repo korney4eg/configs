@@ -34,6 +34,8 @@ module.exports = {
         "https://desktop.pingone.com/openx/*",
         "https://*.gcp.openx.org/*",
         "https://account.jetbrains.com/*",
+        "https://opsg.in/*",
+	"https://openx.slack.com/*"
       ],
       browser: "Google Chrome",
     },
