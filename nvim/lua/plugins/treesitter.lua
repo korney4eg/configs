@@ -15,6 +15,7 @@ return { -- Highlight, edit, and navigate code
         'vim',
         'vimdoc',
         'go',
+        'jsonnet',
         'python',
         --  'helm',
         'erlang',

@@ -6,6 +6,14 @@ return { -- LSP Configuration & Plugins
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     'saghen/blink.cmp',
+    {
+      "folke/lazydev.nvim",
+      opts = {
+        library = {
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
+      },
+    },
 
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -82,15 +90,13 @@ return { -- LSP Configuration & Plugins
       end,
     })
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    -- capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-    capabilities = vim.tbl_deep_extend('force', capabilities,
-      require('blink.cmp').get_lsp_capabilities())
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 
-    local runtime_path = vim.split(package.path, ';')
-    table.insert(runtime_path, 'lua/?.lua')
-    table.insert(runtime_path, 'lua/?/init.lua')
+    -- local runtime_path = vim.split(package.path, ';')
+    -- table.insert(runtime_path, 'lua/?.lua')
+    -- table.insert(runtime_path, 'lua/?/init.lua')
+    -- print(vim.inspect(runtime_path))
 
     local servers = {
       -- clangd = {},
@@ -186,9 +192,6 @@ return { -- LSP Configuration & Plugins
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for tsserver)
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
         end,

@@ -12,15 +12,17 @@ return {
         "giuxtaposition/blink-cmp-copilot",
       },
     },
-    version = false,
+    version = '*',
+    build = 'cargo  +nightly build --release',
     opts = {
       keymap = { preset = 'default' },
       completion = {
         accept = { auto_brackets = { enabled = true } },
         menu = {
+          -- don't show menu in command mode
           border = "single",
           draw = {
-            align_to_component = "label", -- or 'none' to disable
+            align_to = "label", -- or 'none' to disable
             padding = 1,
             gap = 4,
             columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
@@ -28,16 +30,16 @@ return {
         },
         documentation = {
           auto_show = true,
+          auto_show_delay_ms = 500
         },
         ghost_text = {
           enabled = true,
         },
       },
       sources = {
-        -- default = { "lsp", "path", "snippets", "buffer", "lazydev", "copilot" },
-        completion = {
-          enabled_providers = { "lsp", "copilot", "path", "snippets", "buffer" },
-        },
+        default = { "lsp", "copilot", "path", "snippets", "buffer", "lazydev" },
+        -- Disable cmdline completions
+        cmdline = {},
         providers = {
           lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lsp" } },
           copilot = {
