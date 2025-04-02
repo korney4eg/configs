@@ -86,6 +86,33 @@ return { -- LSP Configuration & Plugins
             buffer = event.buf,
             callback = vim.lsp.buf.clear_references,
           })
+          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+            group = vim.api.nvim_create_augroup('line-diagnostics', { clear = true }),
+            callback = function()
+              vim.diagnostic.config({
+                signs = {
+                  text = {
+                    [vim.diagnostic.severity.ERROR] = " ",
+                    [vim.diagnostic.severity.WARN] = " ",
+                    [vim.diagnostic.severity.INFO] = " ",
+                    [vim.diagnostic.severity.HINT] = "󰠠 ",
+                  },
+                  linehl = {
+                    [vim.diagnostic.severity.ERROR] = "Error",
+                    [vim.diagnostic.severity.WARN] = "Warn",
+                    [vim.diagnostic.severity.INFO] = "Info",
+                    [vim.diagnostic.severity.HINT] = "Hint",
+                  },
+                },
+              })
+              if vim.diagnostic.config().virtual_lines then
+                vim.diagnostic.config({ virtual_lines = false })
+              else
+                vim.diagnostic.config({ virtual_lines = { current_line = true } })
+              end
+              return true
+            end,
+          })
         end
       end,
     })
@@ -140,33 +167,30 @@ return { -- LSP Configuration & Plugins
       --
 
       lua_ls = {
-        -- cmd = {...},
-        -- filetypes { ...},
-        -- capabilities = {},
-        -- settings = {
-        --   Lua = {
-        --     runtime = {
-        --       version = 'LuaJIT',
-        --       path = runtime_path,
-        --     },
-        --     workspace = {
-        --       checkThirdParty = false,
-        --       -- Tells lua_ls where to find all the Lua files that you have loaded
-        --       -- for your neovim configuration.
-        --       library = {
-        --         '${3rd}/luv/library',
-        --         unpack(vim.api.nvim_get_runtime_file('', true)),
-        --       },
-        --       -- If lua_ls is really slow on your computer, you can try this instead:
-        --       -- library = { vim.env.VIMRUNTIME },
-        --     },
-        --     completion = {
-        --       callSnippet = 'Replace',
-        --     },
-        --     -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-        --     -- diagnostics = { disable = { 'missing-fields' } },
-        --   },
-        -- },
+        settings = {
+          Lua = {
+            runtime = {
+              -- Tell the language server which version of Lua you're using
+              -- (most likely LuaJIT in the case of Neovim)
+              version = 'LuaJIT',
+            },
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = {
+                'vim',
+                'require'
+              },
+            },
+            workspace = {
+              -- Make the server aware of Neovim runtime files
+              library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+              enable = false,
+            },
+          },
+        },
       },
     }
 
