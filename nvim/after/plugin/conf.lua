@@ -9,3 +9,6 @@ vim.filetype.add {
     tmpl = 'gotmpl',
   },
 }
+
+vim.cmd 'colorscheme sonokai'
+vim.cmd 'hi Comment gui=none'

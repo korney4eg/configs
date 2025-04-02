@@ -34,17 +34,17 @@ return {
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim',     opts = {} },
 
-  {
-    'korney4eg/nvim-coverage',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = function()
-      require('coverage').setup()
-    end,
-    dir = vim.fn.expand '$HOME/projects/neovim/nvim-coverage',
-    -- dev = true,
-  },
+  -- {
+  --   'korney4eg/nvim-coverage',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --   },
+  --   config = function()
+  --     require('coverage').setup()
+  --   end,
+  --   dir = vim.fn.expand '$HOME/projects/neovim/nvim-coverage',
+  --   -- dev = true,
+  -- },
 
   {
     'lewis6991/gitsigns.nvim',
