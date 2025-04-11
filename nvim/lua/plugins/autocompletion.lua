@@ -7,10 +7,10 @@ return {
     lazy = false, -- lazy loading handled internally
     dependencies = {
       "rafamadriz/friendly-snippets",
-      {
-        -- dev = true,
-        "giuxtaposition/blink-cmp-copilot",
-      },
+      -- {
+      --   -- dev = true,
+      --   "giuxtaposition/blink-cmp-copilot",
+      -- },
     },
     version = '*',
     build = 'cargo  +nightly build --release',
@@ -36,12 +36,12 @@ return {
           enabled = true,
         },
       },
+      cmdline = { enabled = false },
       sources = {
-        default = { "lsp", "copilot", "path", "snippets", "buffer", "lazydev" },
+        default = { "lsp", "path", "snippets", "buffer" },
+        -- default = { "lsp", "path", "snippets", "buffer", "copilot" },
         -- Disable cmdline completions
-        cmdline = {},
         providers = {
-          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", fallbacks = { "lsp" } },
           copilot = {
             name = "copilot",
             module = "blink-cmp-copilot",
@@ -104,6 +104,7 @@ return {
       },
     },
   },
+  -- write meaningful comment
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
@@ -111,10 +112,18 @@ return {
     build = ":Copilot auth",
     config = function()
       require("copilot").setup({
-        suggestion = { enabled = false, auto_trigger = true, keymap = { accept = "<M-CR>" } },
+        suggestion = { enabled = false, auto_trigger = true, keymap = { accept = "<C-CR>" } },
         panel = { enabled = false },
         filetypes = {
-          ["*"] = true,
+          markdown = true,   -- overrides default
+          terraform = false, -- disallow specific filetype
+          sh = function()
+            if string.match(vim.fs.basename(vim.api.nvim_buf_get_name(0)), '^%.env.*') then
+              -- disable for .env files
+              return false
+            end
+            return true
+          end,
         },
       })
     end,
