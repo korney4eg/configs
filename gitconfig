@@ -1,8 +1,11 @@
+[url "git@github.com:openx/"]
+	insteadOf = https://github.com/openx/
 [user]
 	name = Aliaksei Karneyeu
 	email = korneevayu@gmail.com
 [push]
 	autoSetupRemote = true
+	default = current
 [pull]
 	rebase = false
 [core]
@@ -10,8 +13,8 @@
     autocrlf = input
     sshCommand = "ssh -i ~/.ssh/pers"
 
-[interactive]
-    diffFilter = delta --color-only
+; [interactive]
+;     diffFilter = delta --color-only
 
 [delta]
     navigate = true    # use n and N to move between diff sections
@@ -24,10 +27,7 @@
     colorMoved = default
 [includeIf "hasconfig:remote.*.url:git@github.com:openx/**"]
     path = ~/work/.gitconfig
-[url "git@github.com:openx/"]
-	insteadOf = https://github.com/openx/
 [credential]
-	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
