@@ -13,17 +13,20 @@ module.exports = {
         "https://google.com/*", // match google.com urls
         "https://console.google.com/*", // match google.com urls
         "https://console.cloud.google.com*", // match google.com urls
+        "https://storage.cloud.google.com/ox-prod-*",
         "https://meet.google.com/*", // match google.com urls
         "https://docs.google.com/*", // match google.com urls
         "https://calendar.google.com/*", // match google.com urls
         "https://mail.google.com/*", // match google.com urls
         "https://forms.gle/*", // match google.com urls
+        "https://j.opsg.in/*",
         // Okta
         "https://openx.okta.com/*", // okta
         "https://slack.com/*", // everything from slack goes to work browser
         "https://github.com/openx/*", // match google.com urls
         "https://github.com/search*", // match google.com urls
         "https://openxtechinc.atlassian.net/*",
+        "https://app.terraform.io/*",
         "https://id.atlassian.com/*",
         "https://app.terraform.io/app/openx/*",
         "https://google.qwiklabs.com/*",
@@ -35,7 +38,9 @@ module.exports = {
         "https://*.gcp.openx.org/*",
         "https://account.jetbrains.com/*",
         "https://opsg.in/*",
-	"https://openx.slack.com/*"
+	"https://openx.slack.com/*",
+        "https://account.jetbrains.com/*",
+        "https://openx.fls.jetbrains.com/*"
       ],
       browser: "Google Chrome",
     },
