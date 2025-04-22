@@ -88,5 +88,9 @@ end
 alias kx=kubectx
 
 
+# colorize go tests output
+function gotest
+    go test $argv | gocol
+end
 
 alias deploy_jekyll="docker run --name newblog -d --rm --volume=\"$HOME/projects/korney4eg.github.io:/srv/jekyll\" -p 4000:4000 -it jekyll/jekyll:4 jekyll serve --watch --drafts"
