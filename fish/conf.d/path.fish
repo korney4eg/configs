@@ -7,3 +7,4 @@ fish_add_path -g ~/go/bin
 fish_add_path -g /opt/homebrew/bin
 fish_add_path -g ~/configs/scripts
 fish_add_path -g ~/.docker/bin/
+fish_add_path -g /opt/homebrew/opt/mysql-client/bin/
