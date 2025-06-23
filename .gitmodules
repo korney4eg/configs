@@ -130,3 +130,6 @@
 [submodule ".vim/ts_parsers/tree-sitter-markdown"]
 	path = nvim/ts_parsers/tree-sitter-markdown
 	url = https://github.com/ikatyang/tree-sitter-markdown
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
