@@ -48,3 +48,6 @@ vim.keymap.set('n', '<Left>', ':vertical resize +1<CR>', default_opts)
 vim.keymap.set('n', '<Right>', ':vertical resize -1<CR>', default_opts)
 vim.keymap.set('n', '<Up>', ':resize -1<CR>', default_opts)
 vim.keymap.set('n', '<Down>', ':resize +1<CR>', default_opts)
+
+vim.cmd(
+  "set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz")

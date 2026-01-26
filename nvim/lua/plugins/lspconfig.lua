@@ -9,10 +9,15 @@ return { -- LSP Configuration & Plugins
 
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', opts = {} },
+    { 'j-hui/fidget.nvim',   opts = {} },
+    -- nvim-navic (breadcrumbs from LSP document symbols)
+    { 'SmiteshP/nvim-navic', opts = {} },
   },
 
   config = function()
+    -- require navic once; it's fine if you load it eagerly here
+    local ok_navic, navic = pcall(require, 'nvim-navic')
+
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
@@ -106,6 +111,15 @@ return { -- LSP Configuration & Plugins
             end,
           })
         end
+        -- ── nvim-navic attach (only if supported, only once per buffer) ───────────
+        if ok_navic and client and client.server_capabilities.documentSymbolProvider then
+          local ok_flag, already = pcall(vim.api.nvim_buf_get_var, event.buf, 'navic_attached')
+          if not ok_flag or not already then
+            navic.attach(client, event.buf)
+            pcall(vim.api.nvim_buf_set_var, event.buf, 'navic_attached', true)
+          end
+        end
+        -- ─────────────────────────────────────────────────────────────────────────
       end,
     })
 
@@ -123,6 +137,7 @@ return { -- LSP Configuration & Plugins
       pyright = {},
       terraformls = {},
       bashls = {},
+      jsonls = {},
       jsonnet_ls = {},
       -- tsserver = {},
       helm_ls = {
@@ -209,6 +224,15 @@ return { -- LSP Configuration & Plugins
         function(server_name)
           local server = servers[server_name] or {}
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+          if server_name == 'lua_ls' then
+            require 'lspconfig'.terraformls.setup {}
+            vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+              pattern = { "*.tf", "*.tfvars" },
+              callback = function()
+                vim.lsp.buf.format()
+              end,
+            })
+          end
           if server_name == 'lua_ls' then
             require 'lspconfig'.lua_ls.setup {
               on_init = function(client)

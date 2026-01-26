@@ -9,6 +9,7 @@ local pickers = require "telescope.pickers"
 return function(opts)
   opts = opts or {}
   opts.cwd = opts.cwd and vim.fn.expand(opts.cwd) or vim.loop.cwd()
+  opts.glob_pattern = '!vendor/**'
   opts.shortcuts = opts.shortcuts
       or {
         ["l"] = "*.lua",

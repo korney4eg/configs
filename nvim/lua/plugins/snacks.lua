@@ -40,6 +40,21 @@ return {
         end,
         desc = "[S]earch [F]iles",
       },
+      -- Grep
+      {
+        "<leader>sg",
+        function()
+          Snacks.picker.grep({
+            exclude = { "vendor", },
+            prompt = " ",
+            finder = "grep",
+            format = "file",
+            layout = "default",
+          }
+          )
+        end,
+        desc = "Grep"
+      },
       -- Navigate my buffers
       {
         "<leader>sb",
@@ -75,7 +90,8 @@ return {
       -- https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
       picker = {
         debug = {
-          scores = true, -- show scores in the list
+          -- scores = true, -- show scores in the list
+          -- grep = true,
         },
         layout = {
           preset = "ivy",
@@ -160,8 +176,8 @@ return {
         },
       },
       bigfile = { enabled = true },
-      dashboard = { enabled = true },
-      explorer = { enabled = true },
+      dashboard = { enabled = false },
+      explorer = { enabled = false },
       indent = { enabled = true },
       input = { enabled = true },
       notifier = {

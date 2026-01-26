@@ -44,3 +44,11 @@ require('lazy').setup({
     },
   },
 })
+
+
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufEnter' }, {
+  pattern = { 'content/**.md' },
+  callback = function()
+    print("this is hugo")
+  end
+})

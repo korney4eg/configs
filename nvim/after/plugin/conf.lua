@@ -10,7 +10,7 @@ vim.filetype.add {
   },
 }
 
-vim.cmd 'colorscheme sonokai'
+vim.cmd 'colorscheme catppuccin'
 vim.cmd 'hi Comment gui=none'
 
 -- transparent background

@@ -121,19 +121,19 @@ return {
         },
       },
       layouts = {
-        {
-          elements = {
-            { id = 'scopes',  size = 0.33 },
-            -- { id = 'breakpoints', size = 0.17 },
-            { id = 'watches', size = 0.67 },
-          },
-          size = 0.3,
-          position = 'right',
-        },
+        -- {
+        --   elements = {
+        --     -- { id = 'breakpoints', size = 0.17 },
+        --     { id = 'watches', size = 0.67 },
+        --   },
+        --   size = 0.3,
+        --   position = 'right',
+        -- },
         {
           elements = {
             -- { id = 'repl', size = 0.45 },
-            { id = 'console', size = 1 },
+            { id = 'scopes', size = 0.33 },
+            -- { id = 'console', size = 1 },
             -- { id = 'stacks', size = 0.5 },
           },
           size = 0.17,
@@ -151,17 +151,19 @@ return {
     } -- use default
 
     -- Change breakpoint icons
-    -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
-    -- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
-    -- local breakpoint_icons = vim.g.have_nerd_font
-    --     and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
-    --   or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
-    -- for type, icon in pairs(breakpoint_icons) do
-    --   local tp = 'Dap' .. type
-    --   local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
-    --   vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
-    -- end
+    vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
+    vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
+    local breakpoint_icons = vim.g.have_nerd_font
+        and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
+        or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
+    for type, icon in pairs(breakpoint_icons) do
+      local tp = 'Dap' .. type
+      local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
+      vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
+    end
 
+    -- vim.cmd("hi DapBreakpointColor guifg=#fa4848")
+    -- vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DapBreakpointColor", linehl = "", numhl = "" })
     dap.listeners.before.attach.dapui_config = function()
       dapui.open()
     end

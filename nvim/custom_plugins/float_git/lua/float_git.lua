@@ -1,0 +1,41 @@
+-- print "hello float git"
+-- Function to open the current buffer in a floating window
+-- Creates a floating window around the current buffer
+-- local function float_current_window()
+-- 	local width = math.floor(vim.o.columns * 0.8)
+-- 	local height = math.floor(vim.o.lines * 0.8)
+-- 	local row = math.floor((vim.o.lines - height) / 2)
+-- 	local col = math.floor((vim.o.columns - width) / 2)
+--
+-- 	vim.api.nvim_open_win(0, true, {
+-- 		relative = "editor",
+-- 		width = width,
+-- 		height = height,
+-- 		row = row,
+-- 		col = col,
+-- 		style = "minimal",
+-- 		border = "rounded",
+-- 	})
+-- end
+--
+-- -- Float ALL fugitive status buffers, including ones opened by `cc`
+-- vim.api.nvim_create_autocmd("BufWinEnter", {
+-- 	callback = function()
+-- 		local name = vim.api.nvim_buf_get_name(0)
+-- 		-- Detect only proper status buffers
+-- 		-- Matches:
+-- 		--   fugitive://*/.git//               ← :G
+-- 		--   fugitive://*/.git//0              ← status window from `cc`
+-- 		if name:match("^fugitive://.*/%.git//") then
+-- 			float_current_window()
+-- 		end
+-- 	end,
+-- })
+--
+-- -- Float commit message buffer opened after `cc`
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "gitcommit",
+-- 	callback = function()
+-- 		float_current_window()
+-- 	end,
+-- })

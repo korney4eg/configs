@@ -17,10 +17,11 @@ vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps'
 -- vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
 vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [w]ord' })
+vim.keymap.set('n', '<leader>sgw', builtin.grep_string, { desc = '[S]earch current [g]lobally [w]ord' })
 vim.keymap.set('n', '<leader>sW', function()
   builtin.grep_string { search = vim.fn.expand '<cWORD>' }
 end, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require "custom.telescope.multi-grep", { desc = '[S]earch by [G]rep' })
+-- vim.keymap.set('n', '<leader>sg', require "custom.telescope.multi-grep", { desc = '[S]earch by [G]rep' })
 -- vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
