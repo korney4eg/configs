@@ -8,7 +8,7 @@ config.background = {
 	-- This is the deepest/back-most layer. It will be rendered first
 	{
 		source = {
-			File = os.getenv("HOME") .. '/configs/wezterm/stars-bg.jpg',
+			File = wezterm.config_dir .. '/stars-bg.jpg',
 		},
 		-- The texture tiles vertically but not horizontally.
 		-- When we repeat it, mirror it so that it appears "more seamless".
