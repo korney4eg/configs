@@ -17,6 +17,7 @@ export default {
         "https://meet.google.com/*", // match google.com urls
         "https://docs.google.com/*", // match google.com urls
         "https://calendar.google.com/*", // match google.com urls
+        "https://accounts.google.com/*", // match google.com urls
         "https://mail.google.com/*", // match google.com urls
         "https://forms.gle/*", // match google.com urls
         "https://j.opsg.in/*",
@@ -43,6 +44,13 @@ export default {
         "https://openx.fls.jetbrains.com/*"
       ],
       browser: "Google Chrome",
+    },
+    {
+      // Open localhost in brave browser
+      match: [
+        "http://localhost:131*/*", // match google.com urls
+      ],
+      browser: "Brave Browser",
     },
   ],
 };
