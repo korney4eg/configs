@@ -26,64 +26,64 @@ return {
         desc = "Keymaps",
       },
       -- File picker
-      {
-        "<leader>sf",
-        function()
-          Snacks.picker.files({
-            finder = "files",
-            format = "file",
-            show_empty = true,
-            supports_live = true,
-            -- In case you want to override the layout for this keymap
-            -- layout = "vscode",
-          })
-        end,
-        desc = "[S]earch [F]iles",
-      },
+      -- {
+      --   "<leader>sF",
+      --   function()
+      --     Snacks.picker.files({
+      --       finder = "files",
+      --       format = "file",
+      --       show_empty = true,
+      --       supports_live = true,
+      --       -- In case you want to override the layout for this keymap
+      --       -- layout = "vscode",
+      --     })
+      --   end,
+      --   desc = "[S]earch [F]iles",
+      -- },
       -- Grep
-      {
-        "<leader>sg",
-        function()
-          Snacks.picker.grep({
-            exclude = { "vendor", },
-            prompt = " ",
-            finder = "grep",
-            format = "file",
-            layout = "default",
-          }
-          )
-        end,
-        desc = "Grep"
-      },
+      -- {
+      --   "<leader>sg",
+      --   function()
+      --     Snacks.picker.grep({
+      --       exclude = { "vendor", },
+      --       prompt = " ",
+      --       finder = "grep",
+      --       format = "file",
+      --       layout = "default",
+      --     }
+      --     )
+      --   end,
+      --   desc = "Grep"
+      -- },
       -- Navigate my buffers
-      {
-        "<leader>sb",
-        function()
-          Snacks.picker.buffers({
-            -- I always want my buffers picker to start in normal mode
-            on_show = function()
-              vim.cmd.stopinsert()
-            end,
-            finder = "buffers",
-            format = "buffer",
-            hidden = false,
-            unloaded = true,
-            current = true,
-            sort_lastused = true,
-            win = {
-              input = {
-                keys = {
-                  ["d"] = "bufdelete",
-                },
-              },
-              list = { keys = { ["d"] = "bufdelete" } },
-            },
-            -- In case you want to override the layout for this keymap
-            -- layout = "ivy",
-          })
-        end,
-        desc = "[P]Snacks picker buffers",
-      },
+      -- {
+      --   "<leader>sb",
+      --   function()
+      --     Snacks.picker.buffers({
+      --       -- I always want my buffers picker to start in normal mode
+      --       on_show = function()
+      --         vim.cmd.stopinsert()
+      --       end,
+      --       finder = "buffers",
+      --       format = "buffer",
+      --       hidden = false,
+      --       unloaded = true,
+      --       current = true,
+      --       sort_lastused = true,
+      --       win = {
+      --         input = {
+      --           keys = {
+      --             ["d"] = "bufdelete",
+      --           },
+      --         },
+      --         list = { keys = { ["d"] = "bufdelete" } },
+      --       },
+      --       -- In case you want to override the layout for this keymap
+      --       -- layout = "ivy",
+      --     })
+      --   end,
+      --   desc = "[P]Snacks picker buffers",
+      -- },
     },
     opts = {
       -- Documentation for the picker
